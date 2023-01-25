@@ -1,803 +1,192 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="keywords" content="browser detection, user-agent, javascript, detect os, detect mobile tablet, detect device, detect cpu, javascript, nodejs, jquery, typescript" />
-  <title>UAParser.js - Detect Browser, Engine, OS, CPU, and Device type/model from User-Agent data using JavaScript. Supports browser & node.js environment. Available as jQuery plugin & @types-ready for TypeScript library.</title>
-  <link rel="icon" type="image/png" href="images/logo.png">
-  <link rel="stylesheet" type="text/css" href="semantic-ui/semantic.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <script src="js/jquery-3.6.0.min.js"></script>
-  <script src="semantic-ui/semantic.js"></script>
-  <script src="js/clipboard.min.js"></script>
-  <script src="js/ua-parser.js"></script>
-  <script src="js/ua-list-example.js"></script>
-  <script src="js/script.js"></script>
-</head>
-<body>
-<div class="pusher">
-  <div class="ui inverted instagram vertical masthead center aligned segment">
-    <div class="ui text container">
-      <h1 class="ui inverted header">
-        What <span class="ui massive black label">device.type</span> am I using?
-      </h1>
-      <h2><a href="https://faisalman.github.io/ua-parser-js">{UAParser.js}</a> abstracts away the hassle of User-Agent detection by turning them into a set of simple & meaningful data so you can focus on what really matters.</h2>
-      <div class="ui large buttons">
-      <a class="ui labeled icon violet button" href="https://github.com/faisalman/ua-parser-js" target="_blank">
-        <i class="download icon"></i>
-        Download
-      </a>
-      <div class="or"></div>
-      <a class="ui right labeled icon violet button" href="#demo">
-        <i class="chevron right icon"></i>
-        See Demo
-      </a>
-      </div>
-    </div>
-  </div>
-  <div class="ui text container">
-    <div id="demo" class="ui horizontal divider">
-      USER-AGENT PLAYGROUND
-    </div>
-    <div class="ui tall stacked segment">
-      <div class="ui basic segment">
-        <p id="ua-txt-info">This is what we get from your User-Agent data: </p>
-        <div class="ui black massive label"><p id="ua-txt"></p><button id="btn-clipboard" class="ui right floated labeled icon violet tiny button" data-clipboard-target="#ua-txt"><i class="clipboard icon"></i>COPY TO CLIPBOARD</button></div>
-      </div>
-      <div id="demo-result" class="ui equal width stackable internally celled grid">
-        <div class="row">
-          <div class="column">
-            <div class="ui center aligned animated icon">
-              <i class="edge icon"></i>
-              Browser
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UAParser-51D.js</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="container">
+          <img src="./src/assets/images/logo.svg" alt="51Deg Logo" />
+        </div>
+      </header>
+      <section class="meet-51deg">
+        <div class="container">
+          <div class="inner">
+            <div class="description">
+              <span>Meet all-new</span>
+              <h1>UAParser-51D.js</h1>
+              <p>
+                A lightweight JavaScript library wrapping 51Degrees device
+                detection cloud service. The lib provides comprehensive device
+                data based on User-Agent Client Hints and/or legacy User-Agent
+                string. Can be used either in a browser (client-side) or node.js
+                (server-side).
+                <br /><br />
+                Client-side supports detection of the current client or
+                detection from an arbitrary header map, server-side supports
+                detection from a header map only.
+              </p>
+              <a href="www.test.com" class="button">Free download</a>
             </div>
-            <div class="ui basic segment">
-              <img class="ui tiny centered image"  id="browser-img" src="">
-            </div>
-            <div class="ui center aligned header">
-              <div class="header" id="browser-txt"></div>
-            </div>
-          </div>
-          <div class="column">
-            <div class="ui center aligned animated icon">
-              <i class="cogs icon"></i>
-              Engine
-            </div>
-            <div class="ui basic segment">
-              <img class="ui tiny centered image" id="engine-img" src="">
-            </div>
-            <div class="ui center aligned header">
-              <div class="header" id="engine-txt"></div>
-            </div>
-          </div>
-          <div class="column">
-            <div class="ui center aligned animated icon">
-              <i class="windows icon"></i>
-              OS
-            </div>
-            <div class="ui basic segment">
-              <img class="ui tiny centered image" id="os-img" src="">
-            </div>
-            <div class="ui center aligned header">
-              <div class="header" id="os-txt"></div>
-            </div>
+            <!--            <img src="./src/assets/images/box.png" alt="" />-->
           </div>
         </div>
-        <div class="row">
-          <div class="column">
-            <div class="ui center aligned animated icon">
-                <i class="tv icon"></i>
-                Type
-            </div>
-            <div class="ui basic segment">
-              <img class="ui tiny centered image" id="type-img" src="">
-              <div class="ui center aligned header">
-                <div class="header" id="type-txt"></div>
+      </section>
+      <section class="playground">
+        <div class="container">
+          <h2>User-Agent playground</h2>
+          <div class="inner">
+            <div class="CH-data">
+              <div class="CH-data__headers">
+                <span>This is what we get from your User-Agent data:</span>
+                <div class="CH-data__listing">
+                  <span>sec-ch-ua</span>: "Not_A Brand";v="99", "Google
+                  Chrome";v="109","Chromium";v="109" <br />
+                  <span>sec-ch-ua-arch</span>: "x86" <br />
+                  <span>sec-ch-ua-full-version</span>: "109.0.5414.87"<br />
+                  <span>sec-ch-ua-platform</span>: "macOS" <br />
+                  <span>sec-ch-ua-platform-version</span>: "13.1.0" <br />
+                  <span>Sec-Fetch-Dest</span>: script <br />
+                  <span>Sec-Fetch-Site</span>: cross-site <br />
+                </div>
+                <button>Copy to clipboard</button>
               </div>
+              <div></div>
             </div>
-          </div>
-          <div class="column">
-            <div class="ui center aligned animated icon">
-                <i class="mobile alternate icon"></i>
-                Model
-            </div>
-            <div class="ui basic segment">
-                <img class="ui tiny centered image" id="device-img" src="">
-                <div class="ui center aligned header">
-                  <div class="header" id="device-txt"></div>
+            <div class="CH-parsed">
+              <span>Extrapolated data:</span>
+              <div class="CH-parsed__listing">
+                <div class="CH-parsed__item">
+                  <span>Browser:</span>
+                  <div class="CH-parsed__value">
+                    <span>Chrome</span>
+                    <span>100.0.0</span>
+                  </div>
                 </div>
-            </div>
-          </div>
-          <div class="column">
-            <div class="ui center aligned animated icon">
-                <i class="microchip icon"></i>
-                CPU
-            </div>
-            <div class="ui basic segment">
-                <img class="ui tiny centered image" id="cpu-img" src="">
-                <div class="ui center aligned header">
-                  <div id="cpu-txt"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-        <div class="ui horizontal divider">
-          TRY MORE EXAMPLES
-        </div>
-        <form class="ui large form">
-          <div class="field">
-            <label>Pick another User-Agent to test:</label>
-            <select class="ui search dropdown" id="demo-select">
-              <option value="">Select</option>
-            </select>
-          </div>
-          <div class="field">
-            <label>OR type any User-Agent you want to check:</label>
-            <div class="ui right action input">
-              <input type="text" name="custom-ua" placeholder="Mozilla/5.0 (Linux; U; Android 4.0.3; H4NY4-C0NT0H Build/CR7) . . . .">
-              <div class="ui right labeled icon violet button" id="demo-btn">
-                <i class="redo alternate icon"></i>
-                CHECK
-              </div>
-            </div>
-          </div>
-          <div class="field">
-          </div>
-        </form>
-    </div>
-    <div id="gpu-divider" class="ui horizontal divider">
-      DETECT GPU FROM WEBGL DATA (EXPERIMENTAL FEATURE)
-    </div>
-    <div id="gpu-segment" class="ui tall stacked segment">
-      <div class="ui equal width stackable internally celled grid">
-        <div class="row">
-          <div class="column">
-            <div class="ui right aligned icon">
-              <i class="microchip icon"></i>
-              GPU
-            </div>
-            <img class="ui tiny centered image" id="gpu-img" src="">
-            <div class="ui center aligned header">
-              <div id="gpu-txt"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="ui horizontal divider">
-      LESS IS MORE
-    </div>
-    <div class="ui tall stacked segment">
-      <div class="ui equal width stackable grid">
-        <div class="row">
-          <div class="column">
-            <div class="ui basic segment">
-              <h3 class="ui header">
-                <i class="filter icon"></i>
-                <div class="content">Extract Only What's Valuable</div>
-              </h3>
-              <p>It's widely known that User-Agent string as of today is a mess. On the other hand, there is no reliable way to identify browser. {UAParser.js} fills this gap by filtering the noise away and extracts only the most relevant data available: Browser, Engine, OS, CPU, and Device.</p>
-            </div>
-          </div>
-          <div class="column">
-            <div class="ui basic segment">
-              <h3 class="ui header">
-                <i class="paper plane icon"></i>
-                <div class="content">Relatively Small Footprint</div>
-              </h3>
-              <p>Started from JavaScript approach, {UAParser.js} is optimized to be used with browser. While it covers a vast range of detection, the size always kept to be as light as possible. For extra cache performance, {UAParser.js} also available in popular CDN services (<a href="https://www.jsdelivr.com/package/npm/ua-parser-js" target="_blank">jsDelivr</a>/<a target="_blank" href="https://cdnjs.com/libraries/UAParser.js">CDNJS</a>).</p>
-            </div>
-          </div>
-          <div class="column">
-            <div class="ui basic segment">
-              <h3 class="ui header">
-                <i class="github icon"></i>
-                <div class="content">
-                  100% Free & Open Source
+                <div class="CH-parsed__item">
+                  <span>Engine:</span>
+                  <div class="CH-parsed__value">
+                    <span>Chrome</span>
+                    <span>100.0.0</span>
+                  </div>
                 </div>
-              </h3>
-              <p>Licensed under a permissive MIT license. {UAParser.js} is free to use, free to modify, free of charge. Get as-is, no support or guarantee offered. Use, extend, or replace with your own set of rules. Don't forget to contribute back by <a href="https://github.com/faisalman/ua-parser-js/pulls" target="_blank">submitting a pull request</a> or <a target="_blank" href="https://opencollective.com/ua-parser-js/">consider donating</a> if you want.</p>
-            </div>
-          </div> 
-        </div>   
-        <div class="row">
-          <div class="column">
-            <div class="ui basic segment">
-              <h3 class="ui header">
-                <i class="npm icon"></i>
-                <div class="content">Client-side & Server-side</div>
-              </h3>
-              <p>Whether it's a client-side webpage running in a browser or a server-side node.js app, simply type:</p><a class="ui violet label" target="_blank" href="https://www.npmjs.com/package/ua-parser-js">$ npm i ua-parser-js --save</a>
-            </div>
-          </div> 
-          <div class="column">
-            <div class="ui basic segment">
-              <h3 class="ui header">
-                <i class="js square icon"></i>
-                <div class="content">
-                  0-dependency Vanilla JS
+                <div class="CH-parsed__item">
+                  <span>OS:</span>
+                  <div class="CH-parsed__value">
+                    <span>Chrome</span>
+                    <span>100.0.0</span>
+                  </div>
                 </div>
-              </h3>
-              <p>No framework needed. No transpiler required. Just a good ol' ES5 which should be able to run on most modern devices that are capable of executing JavaScript. Just insert the code and you're good to go.</p>
-            </div>
-          </div>
-          <div class="column">
-            <div class="ui basic segment">
-              <h3 class="ui header">
-                <i class="rss icon"></i>
-                <div class="content">
-                  Made by and for Developer
-                </div>
-              </h3>
-              <p>Having large user base, whenever jQuery is present, {UAParser.js} will detect and generate $.ua plugin automatically. Also, for TypeScript user, there is a community-maintained typed: <a href="https://www.npmjs.com/package/@types/ua-parser-js" target="_blank">@types/ua-parser-js</a>.</p>
-            </div>
-          </div> 
-        </div>
-      </div>
-    </div>
-    <div class="ui horizontal divider">
-      LOVED BY DEVELOPERS
-    </div>
-    <div class="ui tall stacked segment">
-      <div class="ui equal width stackable divided grid">
-        <div class="row">
-          <div class="column">
-            <div class="ui basic segment">
-              <div class="ui items">
-                <div class="item">
-                  <div class="content">
-                    <a class="header">Great Utility!</a>
-                    <div class="extra">
-                      <div class="ui star rating" data-rating="5" data-max-rating="5"></div> 5/5
-                    </div>
-                    <div class="description">
-                      <p>"A great utility library to  have when you're investigating what kind of users are visiting your website and how you can improve their UX. Supports most browsers out there."</p>
-                      <p>Gabrijel Golubić - Frontend Web Developer</p>
-                    </div>
+                <div class="CH-parsed__item">
+                  <span>Type:</span>
+                  <div class="CH-parsed__value">
+                    <span>Desktop</span>
+                    <span>100.0.0</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="column">
-            <div class="ui basic segment">
-              <div class="ui relaxed divided items">
-                <div class="item">
-                  <div class="content">
-                    <a class="header">Totally Rocks!</a>
-                    <div class="description">
-                      <p>"I've been using your library for a long time and it totally rocks!". Christian Rich - Web Developer</p>
-                    </div>
+          <div class="inner">
+            <div class="try-more">
+              <span>Try more examples</span>
+            </div>
+            <div class="CH-parsed">
+              <span>Extrapolated data:</span>
+              <div class="CH-parsed__listing">
+                <div class="CH-parsed__item">
+                  <span>Browser:</span>
+                  <div class="CH-parsed__value">
+                    <span>Chrome</span>
+                    <span>100.0.0</span>
                   </div>
                 </div>
-                <div class="item">
-                  <div class="content">
-                    <a class="header">Very Useful!</a>
-                    <div class="description">
-                      <p>"Thank you for putting out this very useful library!". Anuj Nijhawan - Web Developer</p>
-                    </div>
+                <div class="CH-parsed__item">
+                  <span>Engine:</span>
+                  <div class="CH-parsed__value">
+                    <span>Chrome</span>
+                    <span>100.0.0</span>
+                  </div>
+                </div>
+                <div class="CH-parsed__item">
+                  <span>OS:</span>
+                  <div class="CH-parsed__value">
+                    <span>Chrome</span>
+                    <span>100.0.0</span>
+                  </div>
+                </div>
+                <div class="CH-parsed__item">
+                  <span>Type:</span>
+                  <div class="CH-parsed__value">
+                    <span>Desktop</span>
+                    <span>100.0.0</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="ui horizontal divider">
-      TRUSTED BY COMPANIES
-    </div>
-    <div class="ui tall stacked segment" id="showcase">
-      <div class="ui basic centered segment">
-        <h2 class="ui centered header">
-          Who's Using {UAParser.js}
-        </h2>
-      </div>
-      <div class="ui basic centered segment">
-        <div class="ui equal width stackable grid"">
-          <div class="row">
-            <div class="column">
-              <img src="images/companies/microsoft.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://opensource.microsoft.com/thanks/" target="_blank" class="ui green button"><i class="windows icon"></i>Website</a>
-                  <a href="https://github.com/microsoft/accessibility-insights-web" target="_blank" class="ui blue button"><i class="search plus icon"></i>Accessibility Insights</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/amazon.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon buttons">
-                  <a href="https://www.amazon.com/gp/help/customer/display.html?nodeId=200309690" target="_blank" class="ui orange button"><i class="amazon icon"></i>Kindle for iOS / Android</a>
-                  <a href="https://github.com/aws/amazon-chime-sdk-js" target="_blank" class="ui black button"><i class="amazon icon"></i>Amazon Chime SDK for JavaScript</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/facebook.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://github.com/facebook/fbjs/tree/fbjs-v2.0.0/packages/fbjs" target="_blank" class="ui blue button"><i class="facebook icon"></i>Facebook / FBJS</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/instagram.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://www.instagram.com" target="_blank" class="ui pink button"><i class="instagram icon"></i>Web-based Instagram</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/whatsapp.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://web.whatsapp.com" target="_blank" class="ui green button"><i class="whatsapp icon"></i>Web-based WhatsApp</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/slack.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://slack.com/libs/desktop" target="_blank" class="ui red button"><i class="slack hash icon"></i>Web-based App</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="column">
-              <img src="images/companies/discord.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://discord.com/acknowledgements" target="_blank" class="ui purple button"><i class="discord icon"></i>Web-based App</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/mozilla.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://github.com/mozilla/addons-frontend/tree/2019.06.06" target="_blank" class="ui orange button"><i class="firefox icon"></i>Add-on Frontend</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/automattic.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://github.com/Automattic/wp-calypso/tree/v6.12.0/client" target="_blank" class="ui blue button"><i class="wordpress icon"></i>WP-Calypso</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/shopify.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://github.com/Shopify/quilt/tree/%40shopify/react-form%400.12.0/packages/browser" target="_blank" class="ui green button"><i class="shopping cart icon"></i>Browser Sniffer</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/amplitude.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://github.com/amplitude/Amplitude-JavaScript" target="_blank" class="ui blue button"><i class="github icon"></i>JavaScript SDK</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/apple.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://music.apple.com/" target="_blank" class="ui black button"><i class="music icon"></i>Apple Music Website</a>
-                  <a href="https://tv.apple.com/" target="_blank" class="ui grey button"><i class="tv icon"></i>Apple TV Website</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="column">
-              <img src="images/companies/electron.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://www.electronjs.org/" target="_blank" class="ui green button"><i class="react icon"></i>Website</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/livechat.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://github.com/livechat/emoji-keyboard" target="_blank" class="ui orange button"><i class="chat icon"></i>Emoji Keyboard</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/rocket.chat.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://github.com/RocketChat/Rocket.Chat/tree/3.12.1" target="_blank" class="ui red button"><i class="rocketchat icon"></i>Rocket.Chat</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/8thwall.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="http://www.8thwall.com/" target="_blank" class="ui violet button"><i class="eye icon"></i>Web AR</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/circleci.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://circleci.com/docs/enterprise/open-source/" target="_blank" class="ui black button"><i class="osi icon"></i>CircleCI Enterprise</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/gitpod.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://gitpod.io" target="_blank" class="ui teal button"><i class="cube icon"></i>Web-based App</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="column">
-              <img src="images/companies/protonmail.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://github.com/ProtonMail/WebClient/" target="_blank" class="ui violet button"><i class="mail icon"></i>WebClient</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/autodesk.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://www.autodesk.com/company/legal-notices-trademarks/autodesk-desktop-platform-components/2021" target="_blank" class="ui blue button"><i class="desktop icon"></i>Desktop Platform</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/confluent.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://www.confluent.io/third_party_software_CP_v5_0/" target="_blank" class="ui blue button"><i class="cube icon"></i>Confluent Platform</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/elastic.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://www.elastic.co/guide/en/cloud-enterprise/current/ece-dependencies.html" target="_blank" class="ui orange button"><i class="cloud icon"></i>Cloud Enterprise</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/optimizely.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://github.com/optimizely/ua-parser-js" target="_blank" class="ui blue button"><i class="circle outline icon"></i>Platform</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/reddit.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://reddit.com/" target="_blank" class="ui orange button"><i class="reddit icon"></i>Website</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="column">
-              <img src="images/companies/scribd.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://www.scribd.com/" target="_blank" class="ui green button"><i class="scribd icon"></i>Website</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/zendesk.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://www.zendesk.com/" target="_blank" class="ui green button"><i class="life ring icon"></i>Support Desk</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/imgur.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://imgur.com/" target="_blank" class="ui black button"><i class="file image icon"></i>Website</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/vimeo.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://vimeo.com/" target="_blank" class="ui teal button"><i class="vimeo v icon"></i>Website</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/tumblr.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://www.tumblr.com/policy/en/web-credits" target="_blank" class="ui teal button"><i class="tumblr icon"></i>Web & Mobile App</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/pinterest.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://www.pinterest.com/" target="_blank" class="ui red button"><i class="pinterest icon"></i>Website</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="column">
-              <img src="images/companies/uber.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://www.uber.com/a/join-new" target="_blank" class="ui black button"><i class="car icon"></i>Website</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/disney.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://www.disneyplus.com" target="_blank" class="ui blue button"><i class="tv icon"></i>Disney+ Website</a>
-                  <a href="https://www.nationalgeographic.com/" target="_blank" class="ui yellow button"><i class="square outline icon"></i>National Geographic Website</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/livescore.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://www.livescore.com/" target="_blank" class="ui orange button"><i class="futbol outline icon"></i>Website</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/freelancer.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://www.freelancer.com/" target="_blank" class="ui teal button"><i class="paper plane icon"></i>Website</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/instacart.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://www.instacart.com/" target="_blank" class="ui green button"><i class="shopping cart icon"></i>Website</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/expedia.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://www.expedia.com/" target="_blank" class="ui blue button"><i class="fighter jet icon"></i>Web-based App</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="column">
-              <img src="images/companies/line.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://line.me" target="_blank" class="ui green button"><i class="chat icon"></i>LINE Messenger</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/olx.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://www.olx.com/" target="_blank" class="ui blue button"><i class="circle outline icon"></i>Website</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/grab.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://food.grab.com" target="_blank" class="ui green button"><i class="utensils icon"></i>GrabFood Web</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/traveloka.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://www.traveloka.com" target="_blank" class="ui blue button"><i class="plane icon"></i>Web-based App</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/shopee.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://seller.shopee.co.id/" target="_blank" class="ui orange button"><i class="shopping bag icon"></i>Seller Center</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/bukalapak.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://bukalapak.com/" target="_blank" class="ui red button"><i class="blogger b icon"></i>Web-based App</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="column">
-              <img src="images/companies/jetbrains.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://www.jetbrains.com/help/hub/third-party-software.html" target="_blank" class="ui yellow button"><i class="cube icon"></i>Hub</a>
-                  <a href="https://www.jetbrains.com/idea/download/" target="_blank" class="ui pink button"><i class="cube icon"></i>Website</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/here.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://github.com/heremaps/harp.gl/tree/master/%40here/harp-test-utils" target="_blank" class="ui teal button"><i class="map marker alternate icon"></i>Harp.gl</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/postman.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://www.postman.com/explore" target="_blank" class="ui orange button"><i class="fighter jet icon"></i>Website</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/intuit.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://myturbotax.intuit.com/" target="_blank" class="ui blue button"><i class="user icon"></i>Web & Mobile Platform</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/neo4j.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://neo4j.com/terms/thirdpartylicenses/bloom/" target="_blank" class="ui blue button"><i class="spinner icon"></i>Neo4j Bloom</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/mongodb.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://docs.mongodb.com/charts/master/third-party-licenses/" target="_blank" class="ui green button"><i class="leaf icon"></i>MongoDB Charts</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="column">
-              <img src="images/companies/dell.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://cloud.ibm.com/media/docs/downloads/oss-licensing-info/IBMCloud-DeveloperConsole-OSS-Licenses.txt" target="_blank" class="ui blue button"><i class="hdd icon"></i>EMC PowerStore</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/ibm.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://cloud.ibm.com/media/docs/downloads/oss-licensing-info/IBMCloud-DeveloperConsole-OSS-Licenses.txt" target="_blank" class="ui grey button"><i class="desktop icon"></i>Developer Console</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/oracle.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://docs.oracle.com/cloud/latest/netsuitecs_gs/NSLIU/NSLIU.pdf" target="_blank" class="ui red button"><i class="database icon"></i>Oracle NetSuite</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/siemens.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://premiumservices.siemens.com/assets/ReadMe_OSS.html" target="_blank" class="ui teal button"><i class="stethoscope icon"></i>Premium Services</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/hpe.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://www.hpe.com/content/dam/hpe/download/pdf/Software/HPE%20OVGD%20v1.40%20ALA.pdf" target="_blank" class="ui green button"><i class="square outline icon"></i>OneView Global Dashboard</a>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <img src="images/companies/verizon.png"/>
-              <div class="ui popup">
-                <div class="ui labeled icon small buttons">
-                  <a href="https://www.verizon.com/supportresources/content/dam/verizon/support/consumer/documents/ftw-open-source-licenses190228.pdf" target="_blank" class="ui red button"><i class="tv icon"></i>Fios TV</a>
-                </div>
-              </div>
-            </div>
+      </section>
+      <section class="less-is-more">
+        <div class="container">
+          <h2>Less is More</h2>
+          <div class="articles">
+            <article>
+              <h3>Extract Only What's Valuable</h3>
+              <p>
+                It's widely known that User-Agent string as of today is a mess.
+                On the other hand, there is no reliable way to identify browser.
+                {UAParser.js} fills this gap by filtering the noise away and
+                extracts only the most relevant data available: Browser, Engine,
+                OS, CPU, and Device.
+              </p>
+            </article>
+            <article>
+              <h3>Relatively Small Footprint</h3>
+              <p>
+                Started from JavaScript approach, {UAParser.js} is optimized to
+                be used with browser. While it covers a vast range of detection,
+                the size always kept to be as light as possible. For extra cache
+                performance, {UAParser.js} also available in popular CDN
+                services (jsDelivr/CDNJS).
+              </p>
+            </article>
+            <article>
+              <h3>100% Free & Open Source</h3>
+              <p>
+                Licensed under a permissive MIT license. {UAParser.js} is free
+                to use, free to modify, free of charge. Get as-is, no support or
+                guarantee offered. Use, extend, or replace with your own set of
+                rules. Don't forget to contribute back by submitting a pull
+                request or consider donating if you want.
+              </p>
+            </article>
+            <article>
+              <h3>Client-side & Server-side</h3>
+              <p>
+                Whether it's a client-side webpage running in a browser or a
+                server-side node.js app, simply type:
+              </p>
+              <code>$ npm i ua-parser-51d-js --save</code>
+            </article>
           </div>
         </div>
-      </div>
-      <div class="ui horizontal divider">
-       USING IT TOO? INSERT YOUR COMPANY HERE
-      </div>
-    </div>
-    <div class="ui hidden divider">
-    </div>
-  </div>  
-  <div class="ui instagram inverted vertical footer segment">
-    <div class="ui text container">
-      <div class="ui stackable inverted divided equal height stackable grid">
-        <div class="five wide column">
-          <div class="ui basic right aligned segment">
-            <img class="ui centered small image" src="images/logo-transparent.png">
-          </div>
-        </div>
-        <div class="eleven wide column">
-          <div class="ui basic right aligned segment">
-            <div class="ui inverted link animated selection horizontal list">
-              <a href="https://github.com/faisalman/ua-parser-js" target="_blank" class="item"><img alt="GitHub" src="https://img.shields.io/github/stars/faisalman/ua-parser-js?style=social"/></a>
-              <a href="https://www.npmjs.com/package/ua-parser-js" target="_blank" class="item"><img alt="npm" src="https://img.shields.io/npm/dm/ua-parser-js?style=social"></a>
-              <a href="https://opencollective.com/ua-parser-js" target="_blank" class="item"><img alt="OpenCollective" src="https://img.shields.io/opencollective/all/ua-parser-js?style=flat-square"></a>
-              <a href="https://www.jsdelivr.com/package/npm/ua-parser-js" target="_blank" class="item"><img alt="jsDelivr" src="https://data.jsdelivr.com/v1/package/npm/ua-parser-js/badge"></a>
-              <a href="https://cdnjs.com/libraries/UAParser.js" target="_blank" class="item"><img alt="Cdnjs" src="https://img.shields.io/cdnjs/v/UAParser.js?style=flat-square"></a>
-              <a href="https://openbase.com/js/ua-parser-js" target="_blank" class="item"><img alt="Openbase" src="https://badges.openbase.com/js/rating/ua-parser-js.svg"/></a>
-            </div>
-          </div>
-          <div class="ui right aligned basic segment">
-            <p>Licensed under MIT license. Copyright (c) 2012-2021 Faisal Salman.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="ui mini modal">
-  <div class="header">Success</div>
-  <div class="content">
-    <p>Copied!</p>
-    <p></p>
-  </div>
-  <div class="actions">
-    <div class="ui ok green button">OK</div>
-  </div>
-</div>
-</body>
+      </section>
+    </main>
+
+    <script type="module" src="./src/scripts/main.js"></script>
+  </body>
 </html>
