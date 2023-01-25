@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Roboto:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Roboto:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
     <link
@@ -27,7 +27,7 @@
           <div class="inner">
             <div class="description">
               <span>Meet all-new</span>
-              <h1>UAParser-51D.js</h1>
+              <h1>UAParser- <b>51D</b>.js</h1>
               <p>
                 A lightweight JavaScript library wrapping 51Degrees device
                 detection cloud service. The lib provides comprehensive device
@@ -62,9 +62,8 @@
                   <span>Sec-Fetch-Dest</span>: script <br />
                   <span>Sec-Fetch-Site</span>: cross-site <br />
                 </div>
-                <button>Copy to clipboard</button>
+                <button class="copy-button">Copy to clipboard</button>
               </div>
-              <div></div>
             </div>
             <div class="CH-parsed">
               <span>Extrapolated data:</span>
@@ -79,63 +78,59 @@
                 <div class="CH-parsed__item">
                   <span>Engine:</span>
                   <div class="CH-parsed__value">
-                    <span>Chrome</span>
+                    <span>Blink</span>
                     <span>100.0.0</span>
                   </div>
                 </div>
                 <div class="CH-parsed__item">
                   <span>OS:</span>
                   <div class="CH-parsed__value">
-                    <span>Chrome</span>
+                    <span>MacOS</span>
                     <span>100.0.0</span>
                   </div>
                 </div>
                 <div class="CH-parsed__item">
                   <span>Type:</span>
+                  <div class="CH-parsed__value"><span>Desktop</span></div>
+                </div>
+                <div class="CH-parsed__item">
+                  <span>Model:</span>
                   <div class="CH-parsed__value">
-                    <span>Desktop</span>
+                    <span>MacBook</span>
                     <span>100.0.0</span>
+                  </div>
+                </div>
+                <div class="CH-parsed__item">
+                  <span>CPU:</span>
+                  <div class="CH-parsed__value">
+                    <span>Apple M1 Pro</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="inner">
+          <div class="inner lower">
             <div class="try-more">
               <span>Try more examples</span>
+              <b>Pick another User-Agent to test:</b>
+              <select name="" id="">
+                <option
+                  value=" Mozilla/5.0 (Windows; U; Windows NT 5.1; de-CH) AppleWebKit/523.15 (KHTML, like Gecko, Safari/419.3) Arora/0.2"
+                >
+                  Mozilla/5.0 (Windows; U; Windows NT 5.1; de-CH)
+                  AppleWebKit/523.15 (KHTML, like Gecko, Safari/419.3) Arora/0.2
+                </option>
+              </select>
             </div>
-            <div class="CH-parsed">
-              <span>Extrapolated data:</span>
-              <div class="CH-parsed__listing">
-                <div class="CH-parsed__item">
-                  <span>Browser:</span>
-                  <div class="CH-parsed__value">
-                    <span>Chrome</span>
-                    <span>100.0.0</span>
-                  </div>
-                </div>
-                <div class="CH-parsed__item">
-                  <span>Engine:</span>
-                  <div class="CH-parsed__value">
-                    <span>Chrome</span>
-                    <span>100.0.0</span>
-                  </div>
-                </div>
-                <div class="CH-parsed__item">
-                  <span>OS:</span>
-                  <div class="CH-parsed__value">
-                    <span>Chrome</span>
-                    <span>100.0.0</span>
-                  </div>
-                </div>
-                <div class="CH-parsed__item">
-                  <span>Type:</span>
-                  <div class="CH-parsed__value">
-                    <span>Desktop</span>
-                    <span>100.0.0</span>
-                  </div>
-                </div>
-              </div>
+            <div class="specific-headers">
+              <span
+                >Specify another set of User-Agent and/or User-Agent Client Hint
+                headers:</span
+              >
+              <textarea name="" id="test">
+Header1: value1
+Header2: value2</textarea
+              >
             </div>
           </div>
         </div>
@@ -185,6 +180,26 @@
           </div>
         </div>
       </section>
+      <section class="try-it">
+        <div class="container">
+          <div class="inner">
+            <div>
+              <b class="title">Try it for free</b>
+              <p>
+                The question isn't "why should you?", it's "why on earth
+                wouldn't you?".
+              </p>
+            </div>
+            <a href="" class="button"> Free download </a>
+          </div>
+        </div>
+      </section>
+      <footer>
+        <div class="container">
+          <img src="./src/assets/images/logo.svg" alt="51Deg Logo" />
+          <p>© Copyright 2010–2023 51Degrees.mobi Limited</p>
+        </div>
+      </footer>
     </main>
 
     <script type="module" src="./src/scripts/main.js"></script>
