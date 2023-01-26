@@ -35,10 +35,32 @@ const EXPECTED_RESULTS = [
   },
 ];
 
-const getParserResult = async () => {
-  const container = document.getElementById("parser-result");
-  const parsedData = await UAParser("AQQ-BCqfIeuOA4ji2kg");
+const getHeadersFromTextArea = async () => {
+  const el = document.getElementById("headers-list");
+  const elVal = el.value;
+  const lines = elVal.split("\n");
+  const headers = lines.reduce((acc, line) => {
+    const [prop, value] = line.split(":");
+    acc[prop] = value;
+    return acc;
+  }, {});
+  const parsedData = await UAParser("AQQ-BCqfIeuOA4ji2kg", headers);
+  drawParsedResult(parsedData);
   console.log(parsedData);
+  console.log(headers);
+};
+
+const grabHeadersButton = document.getElementById("grab-textarea");
+grabHeadersButton.addEventListener("click", getHeadersFromTextArea);
+
+const getParserResult = async () => {
+  const parsedData = await UAParser("AQQ-BCqfIeuOA4ji2kg");
+  drawParsedResult(parsedData);
+};
+
+const drawParsedResult = (parsedData) => {
+  const container = document.getElementById("parser-result");
+  container.innerHTML = "";
   EXPECTED_RESULTS.forEach((r) => {
     const values = r.values
       .flatMap((v) => {
