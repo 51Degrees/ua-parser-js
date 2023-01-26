@@ -10,27 +10,27 @@ const EXPECTED_RESULTS = [
   },
   {
     label: "Engine",
-    icon: "engine-icon",
+    icon: "gear-icon",
     values: ["layoutengine"],
   },
   {
     label: "OS",
-    icon: "os-icon",
+    icon: "point-icon",
     values: ["platformname", "platformversion"],
   },
   {
     label: "Type",
-    icon: "device-icon",
+    icon: "laptop-icon",
     values: ["devicetype"],
   },
   {
     label: "Hardware",
-    icon: "device-icon",
+    icon: "gear-icon",
     values: ["hardwarename", "hardwarevendor"],
   },
   {
     label: "Model",
-    icon: "device-icon",
+    icon: "gear-icon",
     values: ["hardwaremodel"],
   },
 ];

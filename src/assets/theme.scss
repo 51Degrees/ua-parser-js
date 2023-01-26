@@ -217,6 +217,11 @@ header {
     &__title {
       min-width: 84px;
       margin-right: 24px;
+      display: flex;
+      align-items: center;
+      .icon {
+        margin-right: 6px;
+      }
     }
     &__value {
       display: flex;

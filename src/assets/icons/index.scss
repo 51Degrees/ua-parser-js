@@ -13,4 +13,16 @@
   &.download-icon {
     -webkit-mask-image: url(./src/assets/icons/download.svg);
   }
+  &.gear-icon {
+    -webkit-mask-image: url(./src/assets/icons/gear.svg);
+  }
+  &.browser-icon {
+    -webkit-mask-image: url(./src/assets/icons/browser.svg);
+  }
+  &.laptop-icon {
+    -webkit-mask-image: url(./src/assets/icons/laptop.svg);
+  }
+  &.point-icon {
+    -webkit-mask-image: url(./src/assets/icons/point.svg);
+  }
 }
