@@ -1,8 +1,8 @@
-const buildDeviceResultItem = () => {
+const buildDeviceResultItem = (label, values, icon) => {
   const container = document.createElement("div");
   container.classList.add("CH-parsed__item");
-  const title = createTitleContainer();
-  const value = createValueContainer();
+  const title = createTitleContainer(label, icon);
+  const value = createValueContainer(values);
   container.appendChild(title);
   container.appendChild(value);
   return container;
@@ -10,23 +10,24 @@ const buildDeviceResultItem = () => {
 
 export default buildDeviceResultItem;
 
-const createTitleContainer = () => {
+const createTitleContainer = (label, icon) => {
   const titleContainer = document.createElement("div");
   titleContainer.classList.add("CH-parsed__title");
-  const icon = document.createElement("i");
-  icon.classList.add(["icon", "download-icon"]);
-  titleContainer.innerText = "CPU:";
-  titleContainer.prepend(icon);
-
+  const iconElement = document.createElement("i");
+  iconElement.classList.add(["icon", icon]);
+  titleContainer.innerText = `${label}:`;
+  titleContainer.prepend(iconElement);
   return titleContainer;
 };
 
-const createValueContainer = () => {
+const createValueContainer = (values) => {
   const valueContainer = document.createElement("div");
   valueContainer.classList.add("CH-parsed__value");
-  const value = document.createElement("span");
-  value.innerText = "AppleM1 Pro";
-  valueContainer.appendChild(value);
+  values.forEach((value) => {
+    const valueElement = document.createElement("span");
+    valueElement.innerText = value;
+    valueContainer.appendChild(valueElement);
+  });
   return valueContainer;
 };
 
