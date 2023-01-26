@@ -1,4 +1,5 @@
 import "../assets/theme.scss";
+import "./select.js";
 import buildDeviceResultItem from "./buildDeviceResultItem.js";
 import UAParser from "ua-parser-51d-js";
 
@@ -74,7 +75,7 @@ const drawParsedResult = (parsedData) => {
   });
 };
 
-await getParserResult();
+getParserResult().then();
 
 const grabHeadersButton = document.getElementById("grab-textarea");
 grabHeadersButton.addEventListener("click", getHeadersFromTextArea);
@@ -82,7 +83,7 @@ grabHeadersButton.addEventListener("click", getHeadersFromTextArea);
 const setHeaderValueToTextArea = async (event) => {
   const value = event.target.value;
   const el = document.getElementById("headers-list");
-  el.value = `User-Agent: ${value}`;
+  el.value = value;
   await getHeadersFromTextArea();
 };
 
