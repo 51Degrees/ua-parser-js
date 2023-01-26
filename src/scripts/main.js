@@ -38,29 +38,21 @@ const EXPECTED_RESULTS = [
 const getParserResult = async () => {
   const container = document.getElementById("parser-result");
   const parsedData = await UAParser("AQQ-BCqfIeuOA4ji2kg");
-
-  console.log(parsedData);
-
   EXPECTED_RESULTS.forEach((r) => {
-    const values = r.values.map((v) => parsedData.device[v]);
+    const values = r.values
+      .flatMap((v) => {
+        return parsedData.device[v];
+      })
+      .filter((v) => v !== undefined)
+      .filter((v) => {
+        if (Array.isArray(v)) return v;
+        return v.toLowerCase() !== "unknown";
+      });
+
+    if (values.length <= 0) return;
     const el = buildDeviceResultItem(r.label, values, r.icon);
     container.appendChild(el);
   });
 };
 
 await getParserResult();
-
-const accessObjectByString = (o, s) => {
-  s = s.replace(/\[(\w+)\]/g, ".$1"); // convert indexes to properties
-  s = s.replace(/^\./, ""); // strip a leading dot
-  var a = s.split(".");
-  for (var i = 0, n = a.length; i < n; ++i) {
-    var k = a[i];
-    if (k in o) {
-      o = o[k];
-    } else {
-      return;
-    }
-  }
-  return o;
-};
