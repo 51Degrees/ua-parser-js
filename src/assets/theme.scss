@@ -1,3 +1,5 @@
+@import "icons";
+
 .container {
   max-width: 1100px;
   margin: 0 auto;
@@ -18,6 +20,9 @@
   color: #ffffff;
   width: max-content;
   text-decoration: none;
+  .icon {
+    margin-right: 12px;
+  }
 }
 
 .copy-button {
@@ -192,10 +197,10 @@ header {
       line-height: 16px;
       color: #ffffff;
       margin-bottom: 6px;
-      & > span {
-        min-width: 84px;
-        margin-right: 24px;
-      }
+    }
+    &__title {
+      min-width: 84px;
+      margin-right: 24px;
     }
     &__value {
       display: flex;

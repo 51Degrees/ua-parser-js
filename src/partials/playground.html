@@ -1,0 +1,51 @@
+<section class="playground">
+  <div class="container">
+    <h2>User-Agent playground</h2>
+    <div class="inner">
+      <div class="CH-data">
+        <div class="CH-data__headers">
+          <span>This is what we get from your User-Agent data:</span>
+          <div class="CH-data__listing">
+            <span>sec-ch-ua</span>: "Not_A Brand";v="99", "Google
+            Chrome";v="109","Chromium";v="109" <br />
+            <span>sec-ch-ua-arch</span>: "x86" <br />
+            <span>sec-ch-ua-full-version</span>: "109.0.5414.87"<br />
+            <span>sec-ch-ua-platform</span>: "macOS" <br />
+            <span>sec-ch-ua-platform-version</span>: "13.1.0" <br />
+            <span>Sec-Fetch-Dest</span>: script <br />
+            <span>Sec-Fetch-Site</span>: cross-site <br />
+          </div>
+          <button class="copy-button">Copy to clipboard</button>
+        </div>
+      </div>
+      <div class="CH-parsed">
+        <span>Extrapolated data:</span>
+        <div class="CH-parsed__listing" id="parser-result"></div>
+      </div>
+    </div>
+    <div class="inner lower">
+      <div class="try-more">
+        <span>Try more examples</span>
+        <b>Pick another User-Agent to test:</b>
+        <select name="" id="">
+          <option
+            value=" Mozilla/5.0 (Windows; U; Windows NT 5.1; de-CH) AppleWebKit/523.15 (KHTML, like Gecko, Safari/419.3) Arora/0.2"
+          >
+            Mozilla/5.0 (Windows; U; Windows NT 5.1; de-CH) AppleWebKit/523.15
+            (KHTML, like Gecko, Safari/419.3) Arora/0.2
+          </option>
+        </select>
+      </div>
+      <div class="specific-headers">
+        <span
+          >Specify another set of User-Agent and/or User-Agent Client Hint
+          headers:</span
+        >
+        <textarea name="" id="test">
+Header1: value1
+Header2: value2</textarea
+        >
+      </div>
+    </div>
+  </div>
+</section>
