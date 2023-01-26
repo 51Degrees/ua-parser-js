@@ -41,15 +41,14 @@ const getHeadersFromTextArea = async () => {
   const lines = elVal.split("\n");
   const headers = lines.reduce((acc, line) => {
     const [prop, value] = line.split(":");
-    acc[prop] = value;
+    acc[prop] = "";
+    acc[prop] = value.replace(/['"]+/g, "").trim();
     return acc;
   }, {});
   const parsedData = await UAParser("AQQ-BCqfIeuOA4ji2kg", headers);
   drawParsedResult(parsedData);
-  console.log(parsedData);
-  console.log(headers);
 };
-
+const test = new Headers({});
 const grabHeadersButton = document.getElementById("grab-textarea");
 grabHeadersButton.addEventListener("click", getHeadersFromTextArea);
 
@@ -66,7 +65,7 @@ const drawParsedResult = (parsedData) => {
       .flatMap((v) => {
         return parsedData.device[v];
       })
-      .filter((v) => v !== undefined)
+      .filter((v) => v !== undefined && v !== null)
       .filter((v) => {
         if (Array.isArray(v)) return v;
         return v.toLowerCase() !== "unknown";
