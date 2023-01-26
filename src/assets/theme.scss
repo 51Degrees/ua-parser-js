@@ -291,6 +291,7 @@ header {
     }
   }
   .specific-headers {
+    position: relative;
     font-family: "Roboto";
     font-style: normal;
     span {
@@ -320,6 +321,26 @@ header {
       color: rgba(255, 255, 255, 0.5);
       padding: 12px 44px 19px 16px;
       box-sizing: border-box;
+    }
+  }
+  .refresh-button {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #4084ce;
+    border-radius: 3px;
+    outline: none;
+    border: none;
+    position: absolute;
+    right: 22px;
+    bottom: 54px;
+    cursor: pointer;
+    .icon {
+      width: 12px;
+      height: 12px;
+      background-color: #fff;
     }
   }
 }
