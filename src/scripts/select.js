@@ -21,7 +21,7 @@ for (i = 0; i < l; i++) {
       h = this.parentNode.previousSibling;
       for (i = 0; i < sl; i++) {
         if (s.options[i].innerHTML == this.innerHTML) {
-          s.selectedIndex = i;
+          s.selectedIndex = i + 1;
           h.innerHTML = this.innerHTML;
           y = this.parentNode.getElementsByClassName("same-as-selected");
           yl = y.length;
