@@ -48,9 +48,6 @@ const getHeadersFromTextArea = async () => {
   const parsedData = await UAParser("AQQ-BCqfIeuOA4ji2kg", headers);
   drawParsedResult(parsedData);
 };
-const test = new Headers({});
-const grabHeadersButton = document.getElementById("grab-textarea");
-grabHeadersButton.addEventListener("click", getHeadersFromTextArea);
 
 const getParserResult = async () => {
   const parsedData = await UAParser("AQQ-BCqfIeuOA4ji2kg");
@@ -78,3 +75,16 @@ const drawParsedResult = (parsedData) => {
 };
 
 await getParserResult();
+
+const grabHeadersButton = document.getElementById("grab-textarea");
+grabHeadersButton.addEventListener("click", getHeadersFromTextArea);
+
+const setHeaderValueToTextArea = async (event) => {
+  const value = event.target.value;
+  const el = document.getElementById("headers-list");
+  el.value = `User-Agent: ${value}`;
+  await getHeadersFromTextArea();
+};
+
+const userAgentSelector = document.getElementById("user-agent-selector");
+userAgentSelector.addEventListener("change", setHeaderValueToTextArea);
