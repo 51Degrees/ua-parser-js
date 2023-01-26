@@ -11,21 +11,21 @@
     background-color: rgb(225, 225, 225);
   }
   &.download-icon {
-    -webkit-mask-image: url(./src/assets/icons/download.svg);
+    -webkit-mask-image: url(@/assets/icons/download.svg);
   }
   &.gear-icon {
-    -webkit-mask-image: url(./src/assets/icons/gear.svg);
+    -webkit-mask-image: url(@/assets/icons/gear.svg);
   }
   &.browser-icon {
-    -webkit-mask-image: url(./src/assets/icons/browser.svg);
+    -webkit-mask-image: url(@/assets/icons/browser.svg);
   }
   &.laptop-icon {
-    -webkit-mask-image: url(./src/assets/icons/laptop.svg);
+    -webkit-mask-image: url(@/assets/icons/laptop.svg);
   }
   &.point-icon {
-    -webkit-mask-image: url(./src/assets/icons/point.svg);
+    -webkit-mask-image: url(@/assets/icons/point.svg);
   }
   &.refresh-icon {
-    -webkit-mask-image: url(./src/assets/icons/refresh.svg);
+    -webkit-mask-image: url(@/assets/icons/refresh.svg);
   }
 }

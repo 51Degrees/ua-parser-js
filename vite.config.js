@@ -7,4 +7,10 @@ export default {
       partialDirectory: resolve(__dirname, "src/partials"),
     }),
   ],
+  resolve: {
+    alias: {
+      "@": resolve(__dirname, "src"),
+      "~@": resolve(__dirname, "src"),
+    },
+  },
 };
