@@ -20,12 +20,12 @@
   color: #ffffff;
   width: max-content;
   text-decoration: none;
-  .icon {
-    margin-right: 12px;
-  }
 }
 
 .copy-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #ffffff;
   border-radius: 3px;
   font-family: "Verdana";
@@ -37,6 +37,15 @@
   padding: 6px 12px 6px 14px;
   outline: none;
   border: none;
+  .icon {
+    background-color: #222628;
+  }
+}
+.button,
+.copy-button {
+  .icon {
+    margin-right: 12px;
+  }
 }
 
 header {
@@ -114,6 +123,13 @@ header {
 }
 .playground {
   margin-bottom: 120px;
+  position: relative;
+  img {
+    position: absolute;
+    z-index: 2;
+    top: 25%;
+    left: 50%;
+  }
   h2 {
     font-family: "Lilita One";
     font-style: normal;

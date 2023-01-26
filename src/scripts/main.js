@@ -38,6 +38,7 @@ const EXPECTED_RESULTS = [
 const getParserResult = async () => {
   const container = document.getElementById("parser-result");
   const parsedData = await UAParser("AQQ-BCqfIeuOA4ji2kg");
+  console.log(parsedData);
   EXPECTED_RESULTS.forEach((r) => {
     const values = r.values
       .flatMap((v) => {
