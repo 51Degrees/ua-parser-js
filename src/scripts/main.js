@@ -91,7 +91,8 @@ const userAgentSelector = document.getElementById("user-agent-selector");
 userAgentSelector.addEventListener("change", setHeaderValueToTextArea);
 
 const copyToClipboard = async () => {
-  // const headers = getMyHeaders();
+  const headers = getMyHeaders();
+  console.log(headers);
   navigator.clipboard
     .writeText(
       `sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109","Chromium";v="109"
@@ -111,6 +112,7 @@ const getMyHeaders = () => {
   const req = new XMLHttpRequest();
   req.open("GET", document.location, false);
   req.send(null);
+
   return req.getAllResponseHeaders().toLowerCase();
 };
 
