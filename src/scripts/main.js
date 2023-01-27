@@ -89,3 +89,31 @@ const setHeaderValueToTextArea = async (event) => {
 
 const userAgentSelector = document.getElementById("user-agent-selector");
 userAgentSelector.addEventListener("change", setHeaderValueToTextArea);
+
+const copyToClipboard = async () => {
+  const headers = getMyHeaders();
+  navigator.clipboard
+    .writeText(
+      `sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109","Chromium";v="109"
+sec-ch-ua-arch: "x86"
+sec-ch-ua-full-version: "109.0.5414.87"
+sec-ch-ua-platform: "macOS"
+sec-ch-ua-platform-version: "13.1.0"
+Sec-Fetch-Dest: script
+Sec-Fetch-Site: cross-site`
+    )
+    .then(() => {
+      alert("Copied to clipboard");
+    });
+};
+
+const getMyHeaders = () => {
+  const req = new XMLHttpRequest();
+  req.open("GET", document.location, false);
+  req.send(null);
+
+  return req.getAllResponseHeaders().toLowerCase();
+};
+
+const copyToClipboardButton = document.getElementById("copy-to-clipboard");
+copyToClipboardButton.addEventListener("click", copyToClipboard);

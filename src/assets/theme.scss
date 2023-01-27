@@ -64,6 +64,10 @@ header {
   position: relative;
   padding: 160px 0 0 0;
   margin-bottom: 120px;
+  background-image: url("@/assets/images/box.png"),
+    url("@/assets/images/splash.png");
+  background-repeat: no-repeat, no-repeat;
+  background-position: 80% 50%, 85% -20%;
   .inner {
     display: flex;
     align-items: center;
