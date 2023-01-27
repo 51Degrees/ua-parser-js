@@ -33,16 +33,16 @@
   <div class="container">
     <div class="inner">
       <div class="description">
-        <span>Meet all-new</span>
+        <span>Meet the new</span>
         <h1>UAParser- <b>51D</b>.js</h1>
         <p>
-          A lightweight JavaScript library wrapping 51Degrees device detection
-          cloud service. The lib provides comprehensive device data based on
-          User-Agent Client Hints and/or legacy User-Agent string. Can be used
-          either in a browser (client-side) or node.js (server-side).
+          A lightweight JavaScript library wrapping <a href="https://51degrees.com/device-detection">51Degrees Device Detection</a>
+          cloud service. The library provides comprehensive device data based on
+          User Agent Client Hints and/or legacy User-Agent string. This package can be used
+          either in a browser (client-side) or Node.js (server-side) environment.
           <br /><br />
-          Client-side supports detection of the current client or detection from
-          an arbitrary header map, server-side supports detection from a header
+          Client-side supports both detection of the current client and detection from
+          an arbitrary header map, while server-side supports detection from a header
           map only.
         </p>
         <a href="www.test.com" class="button">
@@ -78,7 +78,7 @@
       </div>
       <img src="/assets/arrow-c64fe7a7.svg" alt="" />
       <div class="CH-parsed">
-        <span>Extrapolated data:</span>
+        <span>Detected device data:</span>
         <div class="CH-parsed__listing" id="parser-result"></div>
       </div>
     </div>
@@ -155,33 +155,29 @@ Header2: value2</textarea
           <h2>Less is More</h2>
           <div class="articles">
             <article>
-              <h3>Extract Only What's Valuable</h3>
+              <h3>Extensive device data</h3>
               <p>
-                It's widely known that User-Agent string as of today is a mess.
-                On the other hand, there is no reliable way to identify browser.
-                {UAParser.js} fills this gap by filtering the noise away and
-                extracts only the most relevant data available: Browser, Engine,
-                OS, CPU, and Device.
+                UA-parser-51d-js provides access to the <a href="https://configure.51degrees.com/">51Degrees Cloud service</a>, 
+                which is capable of identifying over 200 different device properties, 
+                such as platform, browser, engine, CPU, vendors, and many more. 
+                The device data is maintained and updated by a professional data analyst team 
+                on a regular basis.
               </p>
             </article>
             <article>
-              <h3>Relatively Small Footprint</h3>
+              <h3>Small library footprint</h3>
               <p>
-                Started from JavaScript approach, {UAParser.js} is optimized to
-                be used with browser. While it covers a vast range of detection,
-                the size always kept to be as light as possible. For extra cache
-                performance, {UAParser.js} also available in popular CDN
-                services (jsDelivr/CDNJS).
+                The ua-parser-51d-js library footprint is a tiny 13KB, 
+                which is smaller than many other available User-Agent parsers available.
               </p>
             </article>
             <article>
-              <h3>100% Free & Open Source</h3>
+              <h3>Open source with a freemium model</h3>
               <p>
-                Licensed under a permissive MIT license. {UAParser.js} is free
-                to use, free to modify, free of charge. Get as-is, no support or
-                guarantee offered. Use, extend, or replace with your own set of
-                rules. Don't forget to contribute back by submitting a pull
-                request or consider donating if you want.
+                We recognize the value of open source – that’s why the ua-parser-51d-js library is freely 
+                available with a limited set of data properties. If you require extra data points 
+                or more requests per month, we offer different 
+                <a href="https://51degrees.com/pricing">pricing plans</a> to suit your needs.
               </p>
             </article>
             <article>
