@@ -2,7 +2,7 @@ import "../assets/theme.scss";
 import "./select.js";
 import buildDeviceResultItem from "./buildDeviceResultItem.js";
 import buildCurrentUADHeader from "@/scripts/buildCurrentUADHeaders.js";
-import UAParser from "@/scripts/parser/dist/bundles/ua-parser-51d-js.umd.js";
+import UAParser from "@/scripts/parser/dist/bundles/ua-parser-51d-js.esm.js";
 
 const EXPECTED_RESULTS = [
   {
@@ -44,9 +44,10 @@ const getHeadersFromTextArea = async () => {
   const headers = lines.reduce((acc, line) => {
     const [prop, value] = line.split(":");
     acc[prop] = "";
-    acc[prop] = value.replace(/['"]+/g, "").trim();
+    acc[prop] = value.replace(/['"]+/g, "").replace(`\\`).trim();
     return acc;
   }, {});
+
   const parsedData = await UAParser("AQQ-BCqfIeuOA4ji2kg", headers);
   drawParsedResult(parsedData);
 };
@@ -93,7 +94,15 @@ userAgentSelector.addEventListener("change", setHeaderValueToTextArea);
 
 const copyToClipboard = async () => {
   const headers = await getMyHeaders();
-  navigator.clipboard.writeText(JSON.stringify(headers)).then(() => {
+  const content = Object.entries(headers)
+    .map((v) => {
+      const [key, value] = v;
+      console.log(`${key}: ${value}`);
+      return `${key}: ${value}`;
+    })
+    .join("\n");
+
+  navigator.clipboard.writeText(content).then(() => {
     alert("Copied to clipboard");
   });
 };
