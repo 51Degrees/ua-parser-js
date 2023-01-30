@@ -1,6 +1,7 @@
 import "../assets/theme.scss";
 import "./select.js";
 import buildDeviceResultItem from "./buildDeviceResultItem.js";
+import buildCurrentUADHeader from "@/scripts/buildCurrentUADHeaders.js";
 import UAParser from "ua-parser-51d-js";
 
 const EXPECTED_RESULTS = [
@@ -91,30 +92,50 @@ const userAgentSelector = document.getElementById("user-agent-selector");
 userAgentSelector.addEventListener("change", setHeaderValueToTextArea);
 
 const copyToClipboard = async () => {
-  const headers = getMyHeaders();
-  console.log(headers);
-  navigator.clipboard
-    .writeText(
-      `sec-ch-ua: "Not_A Brand";v="99", "Google Chrome";v="109","Chromium";v="109"
-sec-ch-ua-arch: "x86"
-sec-ch-ua-full-version: "109.0.5414.87"
-sec-ch-ua-platform: "macOS"
-sec-ch-ua-platform-version: "13.1.0"
-Sec-Fetch-Dest: script
-Sec-Fetch-Site: cross-site`
-    )
-    .then(() => {
-      alert("Copied to clipboard");
-    });
+  const headers = await getMyHeaders();
+  navigator.clipboard.writeText(headers).then(() => {
+    alert("Copied to clipboard");
+  });
 };
-
-const getMyHeaders = () => {
-  const req = new XMLHttpRequest();
-  req.open("GET", document.location, false);
-  req.send(null);
-
-  return req.getAllResponseHeaders().toLowerCase();
-};
-
 const copyToClipboardButton = document.getElementById("copy-to-clipboard");
 copyToClipboardButton.addEventListener("click", copyToClipboard);
+
+const getMyHeaders = async () => {
+  const highEntropyHeaders = await navigator.userAgentData.getHighEntropyValues(
+    ["architecture", "bitness", "model", "platformVersion", "fullVersionList"]
+  );
+
+  const mappedHeaders = {};
+
+  mappedHeaders["sec-ch-ua"] = createSecCHUAFromUAD(highEntropyHeaders.brands);
+  mappedHeaders["sec-ch-arch"] = `x${highEntropyHeaders["bitness"]}`;
+  mappedHeaders["sec-ch-ua-full-version"] = getFullPlatformVersion(
+    highEntropyHeaders.fullVersionList
+  );
+  mappedHeaders["sec-ch-ua-platform"] = highEntropyHeaders["platform"];
+  mappedHeaders["sec-ch-ua-platform-version"] =
+    highEntropyHeaders["platformVersion"];
+
+  mappedHeaders["user-agent"] = navigator.userAgent;
+
+  return mappedHeaders;
+};
+
+const createSecCHUAFromUAD = (values) => {
+  return values
+    .reduce((acc, v) => {
+      acc.push(`${v.brand};v=${v.version}`);
+      return acc;
+    }, [])
+    .join(", ");
+};
+
+const getFullPlatformVersion = (values) => {
+  return values[2].version;
+};
+const drawUADHeaders = async () => {
+  const headers = await getMyHeaders();
+  buildCurrentUADHeader("headers-listing", headers);
+};
+
+drawUADHeaders().then();
