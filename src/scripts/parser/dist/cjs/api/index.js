@@ -1,14 +1,16 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+  value: true,
 });
 Object.defineProperty(exports, "default", {
   enumerable: true,
   get: function get() {
     return _api["default"];
-  }
+  },
 });
-var _api = _interopRequireDefault(require("./api"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+var _api = _interopRequireDefault(require("./api.js"));
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
 //# sourceMappingURL=index.js.map

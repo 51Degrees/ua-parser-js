@@ -10,51 +10,49 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 var api = {
   getJSONRequest: function getJSONRequest(resourceKey, headers) {
-    return request(new URL("https://cloud.51degrees.com/api/v4/".concat(resourceKey, ".json?json-values-only=true ")), headers);
+    return request(new URL("https://cloud.51degrees.com/api/v4/".concat(resourceKey, ".json?cloud.client.product=ua-parser")), headers);
   }
 };
 var request = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(url, headers) {
-    var response, data, http, https, agent, config;
+    var getParams, response, data, http, https, agent, config;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
+          getParams = "&" + new URLSearchParams(headers).toString();
           if (!(typeof window !== "undefined")) {
-            _context.next = 16;
+            _context.next = 17;
             break;
           }
-          _context.prev = 1;
-          _context.next = 4;
-          return fetch(url, {
-            headers: headers
-          });
-        case 4:
+          _context.prev = 2;
+          _context.next = 5;
+          return fetch(url + getParams);
+        case 5:
           response = _context.sent;
-          _context.next = 7;
+          _context.next = 8;
           return response.json();
-        case 7:
+        case 8:
           data = _context.sent;
           return _context.abrupt("return", {
             status: response.status,
             response: data
           });
-        case 11:
-          _context.prev = 11;
-          _context.t0 = _context["catch"](1);
+        case 12:
+          _context.prev = 12;
+          _context.t0 = _context["catch"](2);
           throw new Error("Request failed: ".concat(_context.t0));
-        case 14:
-          _context.next = 21;
+        case 15:
+          _context.next = 22;
           break;
-        case 16:
+        case 17:
           http = require("http");
           https = require("https");
           agent = url.protocol === "http:" ? http : https;
           config = {
             hostname: url.hostname,
             port: url.port,
-            path: url.pathname,
-            method: "POST",
-            headers: headers
+            path: url.pathname + getParams,
+            method: "GET"
           };
           return _context.abrupt("return", new Promise(function (resolve, reject) {
             agent.get(config, function (res) {
@@ -72,11 +70,11 @@ var request = /*#__PURE__*/function () {
               reject(new Error("Request failed: ".concat(error)));
             });
           }));
-        case 21:
+        case 22:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[1, 11]]);
+    }, _callee, null, [[2, 12]]);
   }));
   return function request(_x, _x2) {
     return _ref.apply(this, arguments);

@@ -1,2 +1,2 @@
-export { default } from "./api";
+export { default } from "./api.js";
 //# sourceMappingURL=index.js.map
