@@ -16,12 +16,11 @@ for (i = 0; i < l; i++) {
     c.addEventListener("click", function (e) {
       var y, i, k, s, h, sl, yl;
       s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-      s.dispatchEvent(new Event("change"));
       sl = s.length;
       h = this.parentNode.previousSibling;
       for (i = 0; i < sl; i++) {
         if (s.options[i].innerHTML == this.innerHTML) {
-          s.selectedIndex = i + 1;
+          s.selectedIndex = i;
           h.innerHTML = this.innerHTML;
           y = this.parentNode.getElementsByClassName("same-as-selected");
           yl = y.length;
@@ -33,6 +32,7 @@ for (i = 0; i < l; i++) {
         }
       }
       h.click();
+      s.dispatchEvent(new Event("change"));
     });
     b.appendChild(c);
   }

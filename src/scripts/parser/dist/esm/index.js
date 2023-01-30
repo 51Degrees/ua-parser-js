@@ -1,2 +1,2 @@
-export { default } from "./UAParser";
+export { default } from "./UAParser.js";
 //# sourceMappingURL=index.js.map

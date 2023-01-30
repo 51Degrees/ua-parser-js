@@ -1,1 +1,1 @@
-{"version":3,"file":"index.js","names":[],"sources":["../../src/index.ts"],"sourcesContent":["export { default } from \"./UAParser\";\n"],"mappings":";;;;;;;;;;;AAAA;AAAqC"}
+{"version":3,"file":"index.js","names":[],"sources":["../../src/index.ts"],"sourcesContent":["export { default } from \"./UAParser\";\r\n"],"mappings":";;;;;;;;;;;AAAA;AAAqC"}

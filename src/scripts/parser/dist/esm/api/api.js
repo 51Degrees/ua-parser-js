@@ -1,12 +1,11 @@
 const api = {
-  getJSONRequest: (resourceKey, headers) => request(new URL(`https://cloud.51degrees.com/api/v4/${resourceKey}.json?json-values-only=true `), headers)
+  getJSONRequest: (resourceKey, headers) => request(new URL(`https://cloud.51degrees.com/api/v4/${resourceKey}.json?cloud.client.product=ua-parser`), headers)
 };
 const request = async (url, headers) => {
+  const getParams = "&" + new URLSearchParams(headers).toString();
   if (typeof window !== "undefined") {
     try {
-      const response = await fetch(url, {
-        headers: headers
-      });
+      const response = await fetch(url + getParams);
       const data = await response.json();
       return {
         status: response.status,
@@ -22,9 +21,8 @@ const request = async (url, headers) => {
     const config = {
       hostname: url.hostname,
       port: url.port,
-      path: url.pathname,
-      method: "POST",
-      headers: headers
+      path: url.pathname + getParams,
+      method: "GET"
     };
     return new Promise((resolve, reject) => {
       agent.get(config, res => {

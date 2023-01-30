@@ -2,7 +2,7 @@ import "../assets/theme.scss";
 import "./select.js";
 import buildDeviceResultItem from "./buildDeviceResultItem.js";
 import buildCurrentUADHeader from "@/scripts/buildCurrentUADHeaders.js";
-import UAParser from "@/scripts/parser/dist/bundles/ua-parser-51d-js.esm.js";
+import UAParser from "@/scripts/parser/dist/bundles/bundle.esm.js";
 
 const EXPECTED_RESULTS = [
   {
