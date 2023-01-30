@@ -2,6 +2,7 @@ import { resolve } from "path";
 import handlebars from "vite-plugin-handlebars";
 
 export default {
+  base: "/ua-parser-js-private/",
   root: "src",
   build: {
     outDir: "../",
