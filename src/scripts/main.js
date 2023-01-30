@@ -97,7 +97,6 @@ const copyToClipboard = async () => {
   const content = Object.entries(headers)
     .map((v) => {
       const [key, value] = v;
-      console.log(`${key}: ${value}`);
       return `${key}: ${value}`;
     })
     .join("\n");
@@ -116,14 +115,17 @@ const getMyHeaders = async () => {
 
   const mappedHeaders = {};
 
-  mappedHeaders["sec-ch-ua"] = createSecCHUAFromUAD(highEntropyHeaders.brands);
-  mappedHeaders["sec-ch-arch"] = `x${highEntropyHeaders["bitness"]}`;
-  mappedHeaders["sec-ch-ua-full-version"] = getFullPlatformVersion(
+  mappedHeaders["sec-ch-ua"] = `${createSecCHUAFromUAD(
+    highEntropyHeaders.brands
+  )}`;
+  mappedHeaders["sec-ch-arch"] = `"x${highEntropyHeaders["bitness"]}"`;
+  mappedHeaders["sec-ch-ua-full-version"] = `"${getFullPlatformVersion(
     highEntropyHeaders.fullVersionList
-  );
-  mappedHeaders["sec-ch-ua-platform"] = highEntropyHeaders["platform"];
-  mappedHeaders["sec-ch-ua-platform-version"] =
-    highEntropyHeaders["platformVersion"];
+  )}"`;
+  mappedHeaders["sec-ch-ua-platform"] = `"${highEntropyHeaders["platform"]}"`;
+  mappedHeaders[
+    "sec-ch-ua-platform-version"
+  ] = `"${highEntropyHeaders["platformVersion"]}"`;
 
   mappedHeaders["user-agent"] = navigator.userAgent;
 
@@ -133,14 +135,14 @@ const getMyHeaders = async () => {
 const createSecCHUAFromUAD = (values) => {
   return values
     .reduce((acc, v) => {
-      acc.push(`${v.brand};v=${v.version}`);
+      acc.push(`"${v.brand}";v="${v.version}"`);
       return acc;
     }, [])
     .join(", ");
 };
 
 const getFullPlatformVersion = (values) => {
-  return values[2].version;
+  return values.at(2).version;
 };
 const drawUADHeaders = async () => {
   const headers = await getMyHeaders();
