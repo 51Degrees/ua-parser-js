@@ -109,24 +109,40 @@ const copyToClipboardButton = document.getElementById("copy-to-clipboard");
 copyToClipboardButton.addEventListener("click", copyToClipboard);
 
 const getMyHeaders = async () => {
-  const highEntropyHeaders = await navigator.userAgentData.getHighEntropyValues(
-    ["architecture", "bitness", "model", "platformVersion", "fullVersionList"]
-  );
-
   const mappedHeaders = {};
 
-  mappedHeaders["sec-ch-ua"] = `${createSecCHUAFromUAD(
-    highEntropyHeaders.brands
-  )}`;
-  mappedHeaders["sec-ch-arch"] = `"x${highEntropyHeaders["bitness"]}"`;
-  mappedHeaders["sec-ch-ua-full-version"] = `"${getFullPlatformVersion(
-    highEntropyHeaders.fullVersionList
-  )}"`;
-  mappedHeaders["sec-ch-ua-platform"] = `"${highEntropyHeaders["platform"]}"`;
-  mappedHeaders[
-    "sec-ch-ua-platform-version"
-  ] = `"${highEntropyHeaders["platformVersion"]}"`;
+  if (navigator.userAgentData) {
+    const highEntropyHeaders =
+      await navigator.userAgentData.getHighEntropyValues([
+        "architecture",
+        "bitness",
+        "model",
+        "platformVersion",
+        "fullVersionList",
+      ]);
+    if (createSecCHUAFromUAD(highEntropyHeaders.brands))
+      mappedHeaders["sec-ch-ua"] = `${createSecCHUAFromUAD(
+        highEntropyHeaders.brands
+      )}`;
 
+    if (highEntropyHeaders["bitness"])
+      mappedHeaders["sec-ch-arch"] = `"x${highEntropyHeaders["bitness"]}"`;
+
+    if (getFullPlatformVersion(highEntropyHeaders.fullVersionList))
+      mappedHeaders["sec-ch-ua-full-version"] = `"${getFullPlatformVersion(
+        highEntropyHeaders.fullVersionList
+      )}"`;
+
+    if (highEntropyHeaders["platform"])
+      mappedHeaders[
+        "sec-ch-ua-platform"
+      ] = `"${highEntropyHeaders["platform"]}"`;
+
+    if (highEntropyHeaders["platformVersion"])
+      mappedHeaders[
+        "sec-ch-ua-platform-version"
+      ] = `"${highEntropyHeaders["platformVersion"]}"`;
+  }
   mappedHeaders["user-agent"] = navigator.userAgent;
 
   return mappedHeaders;
