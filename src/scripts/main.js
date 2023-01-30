@@ -2,7 +2,7 @@ import "../assets/theme.scss";
 import "./select.js";
 import buildDeviceResultItem from "./buildDeviceResultItem.js";
 import buildCurrentUADHeader from "@/scripts/buildCurrentUADHeaders.js";
-import UAParser from "ua-parser-51d-js";
+import UAParser from "@/scripts/parser/dist/bundles/ua-parser-51d-js.umd.js";
 
 const EXPECTED_RESULTS = [
   {
@@ -93,7 +93,7 @@ userAgentSelector.addEventListener("change", setHeaderValueToTextArea);
 
 const copyToClipboard = async () => {
   const headers = await getMyHeaders();
-  navigator.clipboard.writeText(headers).then(() => {
+  navigator.clipboard.writeText(JSON.stringify(headers)).then(() => {
     alert("Copied to clipboard");
   });
 };
