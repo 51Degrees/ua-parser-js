@@ -19,8 +19,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
     />
-    <script type="module" crossorigin src="/assets/index-57265645.js"></script>
-    <link rel="stylesheet" href="/assets/index-919aa7f8.css">
+    <script type="module" crossorigin src="/assets/index-dc836f6f.js"></script>
+    <link rel="stylesheet" href="/assets/index-e700a449.css">
   </head>
   <body>
     <main>
@@ -50,28 +50,18 @@
           Free download</a
         >
       </div>
-      <!--            <img src="./src/assets/images/box.png" alt="" />-->
     </div>
   </div>
 </section>
  <section class="playground">
   <div class="container">
-    <h2>User-Agent playground</h2>
+    <h2>User Agent Data Playground</h2>
     <div class="inner">
       <div class="CH-data">
         <div class="CH-data__headers">
-          <span>This is what we get from your User-Agent data:</span>
-          <div class="CH-data__listing">
-            <span>sec-ch-ua</span>: "Not_A Brand";v="99", "Google
-            Chrome";v="109","Chromium";v="109" <br />
-            <span>sec-ch-ua-arch</span>: "x86" <br />
-            <span>sec-ch-ua-full-version</span>: "109.0.5414.87"<br />
-            <span>sec-ch-ua-platform</span>: "macOS" <br />
-            <span>sec-ch-ua-platform-version</span>: "13.1.0" <br />
-            <span>Sec-Fetch-Dest</span>: script <br />
-            <span>Sec-Fetch-Site</span>: cross-site <br />
-          </div>
-          <button class="copy-button">
+          <span>This is what we get from your user agent data:</span>
+          <div class="CH-data__listing" id="headers-listing"></div>
+          <button class="copy-button" id="copy-to-clipboard">
             <i class="icon download-icon"></i>Copy to clipboard
           </button>
         </div>

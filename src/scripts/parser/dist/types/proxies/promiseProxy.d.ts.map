@@ -1,0 +1,1 @@
+{"version":3,"file":"promiseProxy.d.ts","sourceRoot":"","sources":["../../../src/proxies/promiseProxy.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,gBAAgB,EAAE,MAAM,YAAY,CAAC;AAE9C,QAAA,MAAM,sBAAsB;kBAEhB,QAAQ,gBAAgB,CAAC,QAC3B,MAAM;CAQf,CAAC;AAEF,eAAe,sBAAsB,CAAC"}
