@@ -120,18 +120,20 @@ const getMyHeaders = async () => {
         "platformVersion",
         "fullVersionList",
       ]);
-    if (createSecCHUAFromUAD(highEntropyHeaders.brands))
-      mappedHeaders["sec-ch-ua"] = `${createSecCHUAFromUAD(
+
+    console.log(highEntropyHeaders);
+    if (stringFromBrandVersions(highEntropyHeaders.brands))
+      mappedHeaders["sec-ch-ua"] = `${stringFromBrandVersions(
         highEntropyHeaders.brands
       )}`;
 
     if (highEntropyHeaders["bitness"])
       mappedHeaders["sec-ch-arch"] = `"x${highEntropyHeaders["bitness"]}"`;
 
-    if (getFullPlatformVersion(highEntropyHeaders.fullVersionList))
-      mappedHeaders["sec-ch-ua-full-version"] = `"${getFullPlatformVersion(
+    if (stringFromBrandVersions(highEntropyHeaders.fullVersionList))
+      mappedHeaders["sec-ch-ua-full-version-list"] = `${stringFromBrandVersions(
         highEntropyHeaders.fullVersionList
-      )}"`;
+      )}`;
 
     if (highEntropyHeaders["platform"])
       mappedHeaders[
@@ -148,7 +150,7 @@ const getMyHeaders = async () => {
   return mappedHeaders;
 };
 
-const createSecCHUAFromUAD = (values) => {
+const stringFromBrandVersions = (values) => {
   return values
     .reduce((acc, v) => {
       acc.push(`"${v.brand}";v="${v.version}"`);
@@ -157,9 +159,6 @@ const createSecCHUAFromUAD = (values) => {
     .join(", ");
 };
 
-const getFullPlatformVersion = (values) => {
-  return values.at(2).version;
-};
 const drawUADHeaders = async () => {
   const headers = await getMyHeaders();
   buildCurrentUADHeader("headers-listing", headers);
