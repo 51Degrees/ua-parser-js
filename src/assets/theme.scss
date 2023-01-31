@@ -197,7 +197,7 @@ header {
     }
   }
   .CH-parsed {
-    padding: 24px 0 0 80px;
+    padding: 24px 0 0 0;
     & > span {
       font-style: normal;
       font-weight: 700;
@@ -219,6 +219,7 @@ header {
       line-height: 16px;
       color: #ffffff;
       margin-bottom: 6px;
+      padding-left: 80px;
     }
     &__title {
       min-width: 84px;
@@ -528,5 +529,43 @@ footer {
     .container {
       flex-direction: column;
     }
+  }
+}
+
+.error {
+  &-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    padding-right: 90px;
+    b {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 23px;
+      text-align: center;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    p {
+      font-family: "Verdana";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 22px;
+      text-align: center;
+      color: #ffffff;
+      opacity: 0.7;
+    }
+  }
+  &-icon {
+    width: 48px;
+    height: 48px;
+    background-color: #cf3436;
+    margin-bottom: 12px;
+    margin-right: 12px;
   }
 }

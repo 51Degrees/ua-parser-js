@@ -14,8 +14,7 @@ const createTitleContainer = (label, icon) => {
   const titleContainer = document.createElement("div");
   titleContainer.classList.add("CH-parsed__title");
   const iconElement = document.createElement("i");
-  iconElement.classList.add(`icon`);
-  iconElement.classList.add(icon);
+  iconElement.classList.add(`icon`, icon);
   titleContainer.innerText = `${label}:`;
   titleContainer.prepend(iconElement);
   return titleContainer;

@@ -3,6 +3,7 @@ import "./select.js";
 import buildDeviceResultItem from "./buildDeviceResultItem.js";
 import buildCurrentUADHeader from "@/scripts/buildCurrentUADHeaders.js";
 import UAParser from "@/scripts/parser/bundle.esm.js";
+import buildErrorMessage from "./buildErrorMessage.js";
 
 const EXPECTED_RESULTS = [
   {
@@ -38,18 +39,27 @@ const EXPECTED_RESULTS = [
 ];
 
 const getHeadersFromTextArea = async () => {
-  const el = document.getElementById("headers-list");
-  const elVal = el.value;
-  const lines = elVal.split("\n");
-  const headers = lines.reduce((acc, line) => {
-    const [prop, value] = line.split(":");
-    acc[prop] = "";
-    acc[prop] = value.replace(/['"]+/g, "").replace(`\\`).trim();
-    return acc;
-  }, {});
-
-  const parsedData = await UAParser("AQQ-BCqfIeuOA4ji2kg", headers);
-  drawParsedResult(parsedData);
+  try {
+    const el = document.getElementById("headers-list");
+    const elVal = el.value;
+    const lines = elVal.split("\n");
+    const headers = lines.reduce((acc, line) => {
+      const [prop, value] = line.split(":");
+      if (!prop && !value) throw new Error("Headers field empty.");
+      acc[prop] = "";
+      if (!value)
+        throw new Error(
+          "Some header value empty, maybe you forgot to add : between header and value"
+        );
+      acc[prop] = value.replace(/['"]+/g, "").replace(`\\`).trim();
+      return acc;
+    }, {});
+    const parsedData = await UAParser("AQQ-BCqfIeuOA4ji2kg", headers);
+    drawParsedResult(parsedData);
+  } catch (e) {
+    const container = document.getElementById("parser-result");
+    buildErrorMessage(container, e);
+  }
 };
 
 const getParserResult = async () => {

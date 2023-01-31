@@ -28,4 +28,7 @@
   &.refresh-icon {
     -webkit-mask-image: url(@/assets/icons/refresh.svg);
   }
+  &.error-icon {
+    -webkit-mask-image: url(@/assets/icons/error.svg);
+  }
 }
