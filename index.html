@@ -27,8 +27,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
     />
-    <script type="module" crossorigin src="/ua-parser-js-private/assets/index-16bf4f15.js"></script>
-    <link rel="stylesheet" href="/ua-parser-js-private/assets/index-364d0266.css">
+    <script type="module" crossorigin src="/ua-parser-js-private/assets/index-f8aae8de.js"></script>
+    <link rel="stylesheet" href="/ua-parser-js-private/assets/index-2457d7b1.css">
   </head>
   <body>
     <main>
@@ -49,9 +49,9 @@
             >51Degrees Device Detection</a
           >
           cloud service. The library provides comprehensive device data based on
-          User Agent Client Hints and/or legacy User-Agent string. This package
-          can be used either in a browser (client-side) or Node.js (server-side)
-          environment.
+          User-Agent Client Hints and/or the User-Agent. This package can be
+          used either in a browser (client-side) or Node.js environment
+          (server-side).
           <br /><br />
           Client-side supports both detection of the current client and
           detection from an arbitrary header map, while server-side supports
@@ -67,11 +67,11 @@
 </section>
  <section class="playground">
   <div class="container">
-    <h2>User Agent Data Playground</h2>
+    <h2>User-Agent Data Playground</h2>
     <div class="inner">
       <div class="CH-data">
         <div class="CH-data__headers">
-          <span>This is what we get from your user agent data:</span>
+          <span>This is what we get from your User-Agent data:</span>
           <div class="CH-data__listing" id="headers-listing"></div>
           <button class="copy-button" id="copy-to-clipboard">
             <i class="icon download-icon"></i>Copy to clipboard
@@ -162,10 +162,10 @@ Header2: value2</textarea
         <p>
           UAParser-51D.js provides access to the
           <a href="https://configure.51degrees.com/">51Degrees Cloud service</a
-          >, which is capable of identifying over 200 different device
-          properties, such as platform, browser, engine, CPU, vendors, and many
-          more. The device data is maintained and updated by a professional data
-          analyst team on a regular basis.
+          >, which can identify over 200 different device properties, such as
+          platform, browser, engine, CPU, and vendors. The device data is
+          maintained and updated by a professional data analyst team on a
+          regular basis.
         </p>
       </article>
       <article>
@@ -187,10 +187,10 @@ Header2: value2</textarea
         </p>
       </article>
       <article>
-        <h3>Client-side & Server-side</h3>
+        <h3>Client-side and server-side</h3>
         <p>
           Whether it's a client-side webpage running in a browser or a
-          server-side node.js app, simply type:
+          server-side Node.js app, simply type:
         </p>
         <code>$ npm i ua-parser-51d-js --save</code>
       </article>
