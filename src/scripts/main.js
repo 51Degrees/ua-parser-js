@@ -135,9 +135,9 @@ const getMyHeaders = async () => {
       mappedHeaders["sec-ch-ua-bitness"] = `"${highEntropyHeaders["bitness"]}"`;
 
     if (typeof highEntropyHeaders["mobile"] !== undefined)
-      mappedHeaders["sec-ch-ua-mobile"] = `"?${
+      mappedHeaders["sec-ch-ua-mobile"] = `?${
         highEntropyHeaders["mobile"] ? 1 : 0
-      }"`;
+      }`;
 
     if (stringFromBrandVersions(highEntropyHeaders.fullVersionList))
       mappedHeaders["sec-ch-ua-full-version-list"] = `${stringFromBrandVersions(

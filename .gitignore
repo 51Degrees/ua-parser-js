@@ -12,6 +12,7 @@ node_modules/ua-parser-51d-js/dist
 dist-ssr
 *.local
 yarn.lock
+dist
 
 # Editor directories and files
 .vscode/*
