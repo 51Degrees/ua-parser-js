@@ -28,7 +28,7 @@ const EXPECTED_RESULTS = [
   {
     label: "Hardware",
     icon: "gear-icon",
-    values: ["hardwarename", "hardwarevendor"],
+    values: ["hardwarevendor", "hardwarename"],
   },
   {
     label: "Model",
@@ -121,7 +121,6 @@ const getMyHeaders = async () => {
         "fullVersionList",
       ]);
 
-    console.log(highEntropyHeaders);
     if (stringFromBrandVersions(highEntropyHeaders.brands))
       mappedHeaders["sec-ch-ua"] = `${stringFromBrandVersions(
         highEntropyHeaders.brands
