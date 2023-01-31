@@ -1,6 +1,5 @@
 const buildCurrentUADHeader = (containerID, headers) => {
   const container = document.getElementById(containerID);
-  console.log(headers);
   for (const [k, v] of Object.entries(headers)) {
     const el = document.createElement("div");
     const title = document.createElement("span");

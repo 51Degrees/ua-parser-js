@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","names":["default"],"sources":["../../../src/api/index.ts"],"sourcesContent":["export { default } from \"./api\";\r\n"],"mappings":"AAAA,SAASA,OAAO,QAAQ,OAAO"}
