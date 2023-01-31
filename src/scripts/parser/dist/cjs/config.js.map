@@ -1,1 +1,0 @@
-{"version":3,"file":"config.js","names":["USER_KEY_VALID","USER_KEY_NOT_VALID"],"sources":["../../src/config.ts"],"sourcesContent":["export const USER_KEY_VALID = \"AQQ-BCqfIeuOA4ji2kg\";\r\nexport const USER_KEY_NOT_VALID = \"AQRdflw1n5Z66o_ewkg\";\r\n"],"mappings":";;;;;;AAAO,IAAMA,cAAc,GAAG,qBAAqB;AAAC;AAC7C,IAAMC,kBAAkB,GAAG,qBAAqB;AAAC"}
