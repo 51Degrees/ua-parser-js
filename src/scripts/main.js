@@ -132,39 +132,39 @@ const getMyHeaders = async () => {
       ]);
 
     if (stringFromBrandVersions(highEntropyHeaders.brands))
-      mappedHeaders["sec-ch-ua"] = `${stringFromBrandVersions(
+      mappedHeaders["Sec-CH-UA"] = `${stringFromBrandVersions(
         highEntropyHeaders.brands
       )}`;
 
     if (highEntropyHeaders["architecture"])
       mappedHeaders[
-        "sec-ch-ua-arch"
+        "Sec-CH-UA-Arch"
       ] = `"${highEntropyHeaders["architecture"]}"`;
 
     if (highEntropyHeaders["bitness"])
-      mappedHeaders["sec-ch-ua-bitness"] = `"${highEntropyHeaders["bitness"]}"`;
+      mappedHeaders["Sec-CH-UA-Bitness"] = `"${highEntropyHeaders["bitness"]}"`;
 
     if (typeof highEntropyHeaders["mobile"] !== undefined)
-      mappedHeaders["sec-ch-ua-mobile"] = `?${
+      mappedHeaders["Sec-CH-UA-Mobile"] = `?${
         highEntropyHeaders["mobile"] ? 1 : 0
       }`;
 
     if (stringFromBrandVersions(highEntropyHeaders.fullVersionList))
-      mappedHeaders["sec-ch-ua-full-version-list"] = `${stringFromBrandVersions(
+      mappedHeaders["Sec-CH-UA-Full-Version-List"] = `${stringFromBrandVersions(
         highEntropyHeaders.fullVersionList
       )}`;
 
     if (highEntropyHeaders["platform"])
       mappedHeaders[
-        "sec-ch-ua-platform"
+        "Sec-CH-UA-Platform"
       ] = `"${highEntropyHeaders["platform"]}"`;
 
     if (highEntropyHeaders["platformVersion"])
       mappedHeaders[
-        "sec-ch-ua-platform-version"
+        "Sec-CH-UA-Platform-Version"
       ] = `"${highEntropyHeaders["platformVersion"]}"`;
   }
-  mappedHeaders["user-agent"] = navigator.userAgent;
+  mappedHeaders["User-Agent"] = navigator.userAgent;
 
   return mappedHeaders;
 };
