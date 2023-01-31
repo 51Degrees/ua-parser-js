@@ -126,8 +126,18 @@ const getMyHeaders = async () => {
         highEntropyHeaders.brands
       )}`;
 
+    if (highEntropyHeaders["architecture"])
+      mappedHeaders[
+        "sec-ch-ua-arch"
+      ] = `"${highEntropyHeaders["architecture"]}"`;
+
     if (highEntropyHeaders["bitness"])
-      mappedHeaders["sec-ch-arch"] = `"x${highEntropyHeaders["bitness"]}"`;
+      mappedHeaders["sec-ch-ua-bitness"] = `"${highEntropyHeaders["bitness"]}"`;
+
+    if (typeof highEntropyHeaders["mobile"] !== undefined)
+      mappedHeaders["sec-ch-ua-mobile"] = `"?${
+        highEntropyHeaders["mobile"] ? 1 : 0
+      }"`;
 
     if (stringFromBrandVersions(highEntropyHeaders.fullVersionList))
       mappedHeaders["sec-ch-ua-full-version-list"] = `${stringFromBrandVersions(
