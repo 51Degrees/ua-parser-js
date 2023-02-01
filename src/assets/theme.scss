@@ -222,7 +222,7 @@ header {
     }
     &__item {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       font-family: "Roboto";
       font-style: normal;
       font-weight: 700;
@@ -244,18 +244,18 @@ header {
     &__value {
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
       span {
         padding: 4px 12px;
         border-radius: 40px;
         margin-right: 6px;
         box-sizing: border-box;
         display: block;
+        background: rgba(241, 241, 241, 0.1);
+        margin-bottom: 5px;
         &:nth-child(1) {
           background: #ebf3ff;
           color: #2b6dcf;
-        }
-        &:nth-child(2) {
-          background: rgba(241, 241, 241, 0.1);
         }
       }
     }
@@ -495,6 +495,10 @@ footer {
   }
   .meet-51deg {
     background-image: none;
+    padding: 24px;
+    .container:before {
+      content: none;
+    }
   }
   .playground {
     .inner {
