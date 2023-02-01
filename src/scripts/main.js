@@ -37,7 +37,7 @@ const EXPECTED_RESULTS = [
     values: ["hardwaremodel"],
   },
 ];
-
+const RESOURCE_KEY = "AQQ-BCqfO0grmzoE20g";
 const getHeadersFromTextArea = async () => {
   try {
     const el = document.getElementById("headers-list");
@@ -54,7 +54,7 @@ const getHeadersFromTextArea = async () => {
       acc[prop] = value.replace(/['"]+/g, "").replace(`\\`).trim();
       return acc;
     }, {});
-    const parsedData = await UAParser("AQQ-BCqfIeuOA4ji2kg", headers);
+    const parsedData = await UAParser(RESOURCE_KEY, headers);
     drawParsedResult(parsedData);
   } catch (e) {
     const container = document.getElementById("parser-result");
@@ -63,7 +63,7 @@ const getHeadersFromTextArea = async () => {
 };
 
 const getParserResult = async () => {
-  const parsedData = await UAParser("AQQ-BCqfIeuOA4ji2kg");
+  const parsedData = await UAParser(RESOURCE_KEY);
   drawParsedResult(parsedData);
 };
 
