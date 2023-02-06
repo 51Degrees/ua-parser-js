@@ -1,28 +1,50 @@
-var ECustomError;
-(function (ECustomError) {
-  ECustomError["DOM_NOT_FOUND"] = "UAParser is not running in the browser context (no DOM available), you must pass header map as a parameter to do the explicit device detection.";
-  ECustomError["REQUIRED_RESOURCE_KEY"] = "Resource key required. Configure one at https://configure.51degrees.com/S6fGMDKw";
-  ECustomError["EMPTY_RESOURCE_KEY"] = "Empty resource key provided. Configure one at https://configure.51degrees.com/S6fGMDKw";
-  ECustomError["INCOMPLETE_HEADER_MAP"] = "Incomplete header map. Must include either User-Agent or Sec-CH-UA header.";
-  ECustomError["ATTEMPT_TO_USE_USER_AGENT"] = "You are trying to use the legacy UAParser and pass User-Agent string as a parameter, please refer to the new API: await UAParser([resource-key][, header-map]).  Configure a resource key at https://configure.51degrees.com";
-  ECustomError["INVALID_RESOURCE_KEY"] = "Invalid resource key. Configure one at https://configure.51degrees.com/S6fGMDKw";
-  ECustomError["HEADERS_NOT_HASHMAP"] = "Invalid header map. Header map object must be a valid hash map.";
-  ECustomError["INVALID_HEADERS_VALUE"] = "Invalid header map. Header values must be of type string.";
-  ECustomError["PROMISE_MISUSE"] = "You are likely using a legacy API. The new UAParser call returns a promise that must be awaited.";
-})(ECustomError || (ECustomError = {}));
-var ECustomWarnings;
-(function (ECustomWarnings) {
-  ECustomWarnings["USING_DEFAULT_KEY"] = "Resource key not provided. Using default resource key";
-})(ECustomWarnings || (ECustomWarnings = {}));
+'use strict';
 
-var PROMISE_PROXY_HANDLING = {
-  get: function get(target, prop) {
-    if (prop === "then" || prop === "catch") return target[prop].bind(target);
-    if (target instanceof Promise) throw new Error(ECustomError.PROMISE_MISUSE);
-    return Reflect.get(target, prop);
+function _interopNamespace(e) {
+  if (e && e.__esModule) return e;
+  var n = Object.create(null);
+  if (e) {
+    Object.keys(e).forEach(function (k) {
+      if (k !== 'default') {
+        var d = Object.getOwnPropertyDescriptor(e, k);
+        Object.defineProperty(n, k, d.get ? d : {
+          enumerable: true,
+          get: function () { return e[k]; }
+        });
+      }
+    });
   }
-};
+  n["default"] = e;
+  return Object.freeze(n);
+}
 
+function _iterableToArrayLimit(arr, i) {
+  var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"];
+  if (null != _i) {
+    var _s,
+      _e,
+      _x,
+      _r,
+      _arr = [],
+      _n = !0,
+      _d = !1;
+    try {
+      if (_x = (_i = _i.call(arr)).next, 0 === i) {
+        if (Object(_i) !== _i) return;
+        _n = !1;
+      } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0);
+    } catch (err) {
+      _d = !0, _e = err;
+    } finally {
+      try {
+        if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return;
+      } finally {
+        if (_d) throw _e;
+      }
+    }
+    return _arr;
+  }
+}
 function ownKeys(object, enumerableOnly) {
   var keys = Object.keys(object);
   if (Object.getOwnPropertySymbols) {
@@ -345,6 +367,15 @@ function _regeneratorRuntime() {
     }
   }, exports;
 }
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
+    return typeof obj;
+  } : function (obj) {
+    return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+  }, _typeof(obj);
+}
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
@@ -389,6 +420,28 @@ function _defineProperty(obj, key, value) {
   }
   return obj;
 }
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+}
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+  return arr2;
+}
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
 function _toPrimitive(input, hint) {
   if (typeof input !== "object" || input === null) return input;
   var prim = input[Symbol.toPrimitive];
@@ -404,47 +457,163 @@ function _toPropertyKey(arg) {
   return typeof key === "symbol" ? key : String(key);
 }
 
-var DEPRECATED_METHODS = ["getCPU", "getResult", "getBrowser", "getDevice", "getEngine", "getOS", "getUA", "setUA"];
-var RESULT_PROXY_HANDLING = {
+var ECustomError;
+(function (ECustomError) {
+  ECustomError["DOM_NOT_FOUND"] = "UAParser is not running in the browser context (no DOM available), you must pass header map as a parameter to do the explicit device detection.";
+  ECustomError["REQUIRED_RESOURCE_KEY"] = "Resource key required. Configure one at https://configure.51degrees.com/S6fGMDKw";
+  ECustomError["EMPTY_RESOURCE_KEY"] = "Empty resource key provided. Configure one at https://configure.51degrees.com/S6fGMDKw";
+  ECustomError["INCOMPLETE_HEADER_MAP"] = "Incomplete header map. Must include either User-Agent or Sec-CH-UA header.";
+  ECustomError["ATTEMPT_TO_USE_USER_AGENT"] = "You are trying to use the legacy UAParser and pass User-Agent string as a parameter, please refer to the new API: await UAParser([resource-key][, header-map]).  Configure a resource key at https://configure.51degrees.com";
+  ECustomError["INVALID_RESOURCE_KEY"] = "Invalid resource key. Configure one at https://configure.51degrees.com/S6fGMDKw";
+  ECustomError["HEADERS_NOT_HASHMAP"] = "Invalid header map. Header map object must be a valid hash map.";
+  ECustomError["INVALID_HEADERS_VALUE"] = "Invalid header map. Header values must be of type string.";
+  ECustomError["PROMISE_MISUSE"] = "You are likely using a legacy API. The new UAParser call returns a promise that must be awaited.";
+})(ECustomError || (ECustomError = {}));
+var ECustomWarnings;
+(function (ECustomWarnings) {
+  ECustomWarnings["USING_DEFAULT_KEY"] = "Resource key not provided. Using default resource key";
+})(ECustomWarnings || (ECustomWarnings = {}));
+
+var PROMISE_PROXY_HANDLING = {
   get: function get(target, prop) {
-    // TODO: move this error message to the ECustomError, and replace $prop dynamically
-    if (DEPRECATED_METHODS.includes(prop)) throw new Error("Method ".concat(prop, " deprecated. Use result object properties directly. result.device contains new 51Degrees data points."));
+    if (prop === "then" || prop === "catch") return target[prop].bind(target);
+    if (target instanceof Promise) throw new Error(ECustomError.PROMISE_MISUSE);
     return Reflect.get(target, prop);
   }
 };
 
+var DEPRECATED_METHODS = ["getUA", "setUA"];
+var RESULT_PROXY_HANDLING = {
+  get: function get(target, prop) {
+    if (DEPRECATED_METHODS.includes(prop)) throw new Error("".concat(prop, " is a UAParser result deprecated method, consider using `result.device` that contains comprehensive device data."));
+    return Reflect.get(target, prop);
+  }
+};
+
+var ELegacyDeviceType = {
+  Console: "console",
+  Desktop: "desktop",
+  EReader: "embedded",
+  IoT: "embedded",
+  MediaHub: "smarttv",
+  Mobile: "mobile",
+  NotMobile: null,
+  Router: "embedded",
+  SmallScreen: "embedded",
+  SmartPhone: "mobile",
+  SmartSpeaker: "embedded",
+  SmartWatch: "wearable",
+  Tablet: "tablet",
+  Tv: "smarttv"
+};
+var mapDeviceTypeToLegacy = function mapDeviceTypeToLegacy(type) {
+  return ELegacyDeviceType[type];
+};
+
 var LEGACY_PROPERTIES_MAPPING = {
   browser: {
-    name: "BrowserName",
-    version: "BrowserVersion"
+    name: "browsername",
+    version: "browservendor"
   },
   cpu: {
-    architecture: "Unknown"
+    architecture: undefined
   },
   device: {
-    model: "HardwareModel",
-    type: "DeviceType",
-    vendor: "HardwareVendor"
+    model: "hardwaremodel",
+    type: "devicetype",
+    vendor: "hardwarevendor"
   },
   engine: {
-    name: "LayoutEngine",
-    version: "Unknown"
+    name: "layoutengine",
+    version: undefined
   },
   os: {
-    name: "PlatformName",
-    version: "PlatformVersion"
+    name: "platformname",
+    version: "platformversion"
+  }
+};
+var LEGACY_METHODS_MAPPING = {
+  getBrowser: function getBrowser() {
+    return LEGACY_PROPERTIES_MAPPING.browser;
+  },
+  getCPU: function getCPU() {
+    return LEGACY_PROPERTIES_MAPPING.cpu;
+  },
+  getDevice: function getDevice() {
+    return LEGACY_PROPERTIES_MAPPING.device;
+  },
+  getEngine: function getEngine() {
+    return LEGACY_PROPERTIES_MAPPING.engine;
+  },
+  getOS: function getOS() {
+    return LEGACY_PROPERTIES_MAPPING.os;
+  },
+  getResult: function getResult() {
+    return {
+      os: LEGACY_METHODS_MAPPING.getOS(),
+      browser: LEGACY_METHODS_MAPPING.getBrowser(),
+      cpu: LEGACY_METHODS_MAPPING.getCPU(),
+      device: LEGACY_METHODS_MAPPING.getDevice(),
+      engine: LEGACY_METHODS_MAPPING.getEngine()
+    };
   }
 };
 var extendWithLegacyProps = function extendWithLegacyProps(target) {
   var temp = _objectSpread2({}, target);
-  Object.keys(LEGACY_PROPERTIES_MAPPING).forEach(function (cKey) {
-    if (!temp[cKey]) temp[cKey] = {};
-    Object.keys(LEGACY_PROPERTIES_MAPPING[cKey]).forEach(function (eKey) {
-      var mappedPropName = LEGACY_PROPERTIES_MAPPING[cKey][eKey].toLowerCase();
-      temp[cKey][eKey] = temp.device[mappedPropName] || undefined;
-    });
-  });
+  for (var _i = 0, _Object$entries = Object.entries(LEGACY_PROPERTIES_MAPPING); _i < _Object$entries.length; _i++) {
+    var _Object$entries$_i2 = _slicedToArray(_Object$entries[_i], 2),
+      prop = _Object$entries$_i2[0],
+      propValue = _Object$entries$_i2[1];
+    if (!temp[prop]) temp[prop] = {};
+    temp[prop] = Object.assign(temp[prop], createLegacyData(temp, propValue));
+  }
+  for (var _i2 = 0, _Object$entries2 = Object.entries(LEGACY_METHODS_MAPPING); _i2 < _Object$entries2.length; _i2++) {
+    var _Object$entries2$_i2 = _slicedToArray(_Object$entries2[_i2], 2),
+      methodName = _Object$entries2$_i2[0],
+      methodFunction = _Object$entries2$_i2[1];
+    temp[methodName] = createLegacyMethod(temp, methodFunction);
+  }
   return temp;
+};
+var createLegacyData = function createLegacyData(donor, target) {
+  var donorValues = _objectSpread2({}, donor.device);
+  var result = {};
+  for (var _i3 = 0, _Object$entries3 = Object.entries(target); _i3 < _Object$entries3.length; _i3++) {
+    var _Object$entries3$_i2 = _slicedToArray(_Object$entries3[_i3], 2),
+      UALegacyName = _Object$entries3$_i2[0],
+      FODParamName = _Object$entries3$_i2[1];
+    if (!result[UALegacyName]) result[UALegacyName] = "";
+    if (FODParamName === undefined) result[UALegacyName] = undefined;
+    if (FODParamName && donorValues[FODParamName] && donorValues[FODParamName].toLowerCase() === "unknown") {
+      result[UALegacyName] = undefined;
+      continue;
+    }
+    if (FODParamName === "devicetype") {
+      result[UALegacyName] = mapDeviceTypeToLegacy(donorValues[FODParamName]);
+      continue;
+    }
+    result[UALegacyName] = donorValues[FODParamName];
+  }
+  return result;
+};
+var createLegacyMethod = function createLegacyMethod(donor, method) {
+  var methodResultingObject = method();
+  if (methodResultingObject.browser) {
+    var result = {};
+    for (var _i4 = 0, _Object$entries4 = Object.entries(methodResultingObject); _i4 < _Object$entries4.length; _i4++) {
+      var _Object$entries4$_i2 = _slicedToArray(_Object$entries4[_i4], 2),
+        _key = _Object$entries4$_i2[0],
+        value = _Object$entries4$_i2[1];
+      if (!result[_key]) result[_key] = {};
+      result[_key] = createLegacyData(donor, value);
+    }
+    return function () {
+      return result;
+    };
+  }
+  return function () {
+    return createLegacyData(donor, methodResultingObject);
+  };
 };
 
 var createInjectionInstance = /*#__PURE__*/function () {
@@ -499,7 +668,7 @@ var request = /*#__PURE__*/function () {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           getParams = "&" + new URLSearchParams(headers).toString();
-          if (!(typeof window !== "undefined")) {
+          if (!(typeof window !== "undefined" && Object.keys(window).length > 0)) {
             _context.next = 17;
             break;
           }
@@ -521,17 +690,42 @@ var request = /*#__PURE__*/function () {
           _context.t0 = _context["catch"](2);
           throw new Error("Request failed: ".concat(_context.t0));
         case 15:
-          _context.next = 22;
+          _context.next = 36;
           break;
         case 17:
-          http = require("http");
-          https = require("https");
+          if (!process.mainModule) {
+            _context.next = 21;
+            break;
+          }
+          _context.t1 = require("http");
+          _context.next = 24;
+          break;
+        case 21:
+          _context.next = 23;
+          return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require('http')); });
+        case 23:
+          _context.t1 = _context.sent;
+        case 24:
+          http = _context.t1;
+          if (!process.mainModule) {
+            _context.next = 29;
+            break;
+          }
+          _context.t2 = require("https");
+          _context.next = 32;
+          break;
+        case 29:
+          _context.next = 31;
+          return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require('https')); });
+        case 31:
+          _context.t2 = _context.sent;
+        case 32:
+          https = _context.t2;
           agent = url.protocol === "http:" ? http : https;
           config = {
             hostname: url.hostname,
             port: url.port,
-            path: url.pathname + getParams,
-            method: "GET"
+            path: url.pathname + url.search + getParams
           };
           return _context.abrupt("return", new Promise(function (resolve, reject) {
             agent.get(config, function (res) {
@@ -549,7 +743,7 @@ var request = /*#__PURE__*/function () {
               reject(new Error("Request failed: ".concat(error)));
             });
           }));
-        case 22:
+        case 36:
         case "end":
           return _context.stop();
       }
@@ -599,6 +793,12 @@ var createAPIInstance = /*#__PURE__*/function () {
   };
 }();
 
+/**
+ * UAParser detects device data either from the current browser context or from the passed `headerMap` parameter.  Note: if you are running on the server side in the Node.js environment - you must pass the headerMap parameter.  It can be either taken from the current request or from the stored data.
+ *  @param key - Required to use the 51Degrees Cloud service that UAParser relies on internally.  Configure one at {@link https://configure.51degrees.com/S6fGMDKw}
+ *  @param headers - an optional param Map of HTTP headers containing User-Agent Client Hints and/or User-Agent.  if omitted UAParser will assume browser context and try to do detection from within the DOM.
+ *  @returns a Result object with a nested .device object containing all the detected device properties.
+ */
 var UAParser = function UAParser(key, headers) {
   if (!key) throw Error(ECustomError.REQUIRED_RESOURCE_KEY);
   if (key.length <= 0) throw Error(ECustomError.EMPTY_RESOURCE_KEY);
@@ -621,6 +821,28 @@ var UAParser = function UAParser(key, headers) {
   })) throw Error(ECustomError.INCOMPLETE_HEADER_MAP);
   return new Proxy(createAPIInstance(key, headers), PROMISE_PROXY_HANDLING);
 };
+(function (window, undefined$1) {
+  if (typeof exports !== 'undefined') {
+    // nodejs env
+    if (typeof module !== 'undefined' && module.exports) {
+      exports = module.exports = UAParser;
+    }
+    exports.UAParser = UAParser;
+  } else {
+    // requirejs env (optional)
+    // @ts-ignore
+    if (typeof define === 'function' && define.amd) {
+      // @ts-ignore
+      define(function () {
+        return UAParser;
+      });
+    } else if (typeof window !== 'undefined') {
+      // browser env
+      // @ts-ignore
+      window.UAParser = UAParser;
+    }
+  }
+})((typeof window === "undefined" ? "undefined" : _typeof(window)) === 'object' ? window : undefined);
 
-export { UAParser as default };
-//# sourceMappingURL=bundle.esm.js.map
+export default UAParser
+
