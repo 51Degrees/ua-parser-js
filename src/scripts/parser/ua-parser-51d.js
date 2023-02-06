@@ -821,28 +821,28 @@ var UAParser = function UAParser(key, headers) {
   })) throw Error(ECustomError.INCOMPLETE_HEADER_MAP);
   return new Proxy(createAPIInstance(key, headers), PROMISE_PROXY_HANDLING);
 };
+
 (function (window, undefined$1) {
-  if (typeof exports !== 'undefined') {
+  if (typeof exports !== "undefined") {
     // nodejs env
-    if (typeof module !== 'undefined' && module.exports) {
+    if (typeof module !== "undefined" && module.exports) {
       exports = module.exports = UAParser;
     }
     exports.UAParser = UAParser;
   } else {
     // requirejs env (optional)
     // @ts-ignore
-    if (typeof define === 'function' && define.amd) {
+    if (typeof define === "function" && define.amd) {
       // @ts-ignore
       define(function () {
         return UAParser;
       });
-    } else if (typeof window !== 'undefined') {
+    } else if (typeof window !== "undefined") {
       // browser env
       // @ts-ignore
       window.UAParser = UAParser;
     }
   }
-})((typeof window === "undefined" ? "undefined" : _typeof(window)) === 'object' ? window : undefined);
+})((typeof window === "undefined" ? "undefined" : _typeof(window)) === "object" ? window : undefined);
 
 export default UAParser
-

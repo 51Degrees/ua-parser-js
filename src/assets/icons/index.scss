@@ -31,4 +31,7 @@
   &.error-icon {
     -webkit-mask-image: url(@/assets/icons/error.svg);
   }
+  &.check-mark-icon {
+    -webkit-mask-image: url(@/assets/icons/check-mark.svg);
+  }
 }
