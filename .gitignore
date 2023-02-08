@@ -1,6 +1,6 @@
 node_modules/
 npm-debug.log
-
+yarn.lock
 ### vim ###
 .*.s[a-w][a-z]
 *.un~
@@ -8,6 +8,9 @@ Session.vim
 .netrwhist
 *~
 .versions
+
+.env
+.env.local
 
 ### editors ###
 .vscode

@@ -1,0 +1,11 @@
+{
+  "transform": {
+    "^.+\\.(t|j)sx?$": "ts-jest"
+  },
+  "testRegex": "(/__tests__/.*|(\\.|/)(__test__|spec))\\.(jsx?|tsx?)$",
+  "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
+  "maxWorkers": 2,
+  "testPathIgnorePatterns": ["src/__mocks__", "src/__tests__/shared"],
+  "preset": "jest-puppeteer",
+  "testEnvironment": "jsdom"
+}

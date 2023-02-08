@@ -5,16 +5,18 @@ on: [push, pull_request]
 permissions:
   contents: read
 
+env:
+  USER_KEY_VALID: ${{ secrets.USER_KEY_VALID }}
+  USER_KEY_INVALID: ${{ secrets.USER_KEY_INVALID }}
+
 jobs:
   run-test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        arch: [amd64, ppc64le]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
       - name: Run the test
         run: |
-          npm install
-          npm run test-ci
+          yarn
+          yarn build
+          yarn test

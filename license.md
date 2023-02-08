@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2012-2021 Faisal Salman <<f@faisalman.com>>
+Copyright (c) 2023 51Degrees <support@51degrees.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Delegate-CH"
+      content="Sec-CH-UA-Model https://cloud.51degrees.com; Sec-CH-UA https://cloud.51degrees.com; Sec-CH-UA-Arch https://cloud.51degrees.com; Sec-CH-UA-Full-Version https://cloud.51degrees.com; Sec-CH-UA-Mobile https://cloud.51degrees.com; Sec-CH-UA-Platform https://cloud.51degrees.com; Sec-CH-UA-Platform-Version https://cloud.51degrees.com"
+    />
+    <title>ua-parser-51d-js</title>
+    <style>
+      .container {
+        max-width: 480px;
+        margin: 0 auto;
+      }
+      code {
+        display: block;
+        padding: 16px;
+        overflow: auto;
+        font-size: 85%;
+        line-height: 1.45;
+        border-radius: 6px;
+        background-color: #161b22;
+        color: #fff;
+        width: 100%;
+      }
+      h4,
+      code,
+      script {
+        font-family: monospace;
+        white-space: break-spaces;
+      }
+    </style>
+    <script type="text/javascript" src="parser.js"></script>
+  </head>
+  <body>
+    <main>
+      <section class="container">
+        <script type="module">
+          const value = await UAParser("AQQ-BCqfO0grmzoE20g", {
+            "sec-ch-ua":
+              "Not_A Brand;v=99, Google Chrome;v=109, Chromium;v=109",
+            "sec-ch-ua-arch": "x64",
+            "sec-ch-ua-full-version": "109.0.5414.87",
+            "sec-ch-ua-platform": "macOS",
+            "sec-ch-ua-platform-version": "12.2.1",
+            "user-agent":
+              "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36",
+          });
+          const element = document.getElementById("resolve");
+          element.textContent = JSON.stringify(value, undefined, 2);
+        </script>
+        <h4>Response</h4>
+        <pre><code id="resolve"></code></pre>
+      </section>
+    </main>
+  </body>
+</html>
