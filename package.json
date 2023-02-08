@@ -12,7 +12,6 @@
     "url": "git+https://github.com/51Degrees/ua-parser-js.git"
   },
   "license": "MIT",
-  "private": true,
   "devDependencies": {
     "@babel/cli": "^7.20.7",
     "@babel/preset-env": "^7.20.2",
