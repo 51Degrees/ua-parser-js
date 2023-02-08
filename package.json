@@ -9,7 +9,7 @@
   "demo": "https://51Degrees.github.io/ua-parser-js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/51Degrees/ua-parser-js-private.git"
+    "url": "https://github.com/51Degrees/ua-parser-js.git"
   },
   "license": "MIT",
   "private": true,
