@@ -70,5 +70,8 @@
     "User-Agent",
     "UAParser"
   ],
-  "author": "Roman Sertsov <roman.sertsov@postindustria.com>"
+  "author": "Roman Sertsov <roman.sertsov@postindustria.com>",
+  "publishConfig": {
+    "access": "public"
+  }
 }
