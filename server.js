@@ -31,7 +31,7 @@ const server = http.createServer((req, res) => {
       process.exit(1);
       break;
     case "/parser.js":
-      fs.readFile(__dirname + "/lib/ua-parser.min.js").then(
+      fs.readFile(__dirname + "/lib/ua-parser-51d.min.js").then(
         (contents) => {
           res.setHeader("Content-Type", "text/javascript");
           res.writeHead(200);
