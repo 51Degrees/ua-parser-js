@@ -11,6 +11,7 @@ Session.vim
 
 .env
 .env.local
+.yarn.lock
 
 ### editors ###
 .vscode
