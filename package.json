@@ -1,9 +1,9 @@
 {
-  "name": "@51degrees/ua-parser-51d-js",
-  "version": "2.0.1",
+  "name": "@51degrees/ua-parser-js",
+  "version": "2.0.0",
   "description": "Detect device data using 51Degrees Cloud service. All evidence is used including User-Agent and User-Agent Client Hints.  Works in browsers and Node.js",
   "download": "https://raw.github.com/51Degrees/ua-parser-js/main/lib/ua-parser.min.js",
-  "main": "lib/ua-parser-51d.js",
+  "main": "lib/ua-parser.js",
   "types": "lib/types/UAParser.d.ts",
   "homepage": "https://github.com/51Degrees/ua-parser-js",
   "demo": "https://51Degrees.github.io/ua-parser-js",

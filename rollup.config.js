@@ -9,12 +9,12 @@ export default {
   input: "src/index.ts",
   output: [
     {
-      file: "lib/ua-parser-51d.js",
+      file: "lib/ua-parser.js",
       format: "cjs",
       plugins: [],
     },
     {
-      file: "lib/ua-parser-51d.min.js",
+      file: "lib/ua-parser.min.js",
       format: "cjs",
       plugins: [terser()],
     },
