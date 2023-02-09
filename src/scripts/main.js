@@ -2,8 +2,9 @@ import "../assets/theme.scss";
 import "./select.js";
 import buildDeviceResultItem from "./buildDeviceResultItem.js";
 import buildCurrentUADHeader from "@/scripts/buildCurrentUADHeaders.js";
-import UAParser from "./parser/ua-parser-51d.js";
 import buildErrorMessage from "./buildErrorMessage.js";
+
+import UAParser from "@51degrees/ua-parser-js";
 
 const EXPECTED_RESULTS = [
   {
