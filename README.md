@@ -9,7 +9,7 @@
 <a href="https://www.jsdelivr.com/package/npm/ua-parser-js"><img src="https://data.jsdelivr.com/v1/package/npm/ua-parser-js/badge"></a>
 <a href="https://cdnjs.com/libraries/UAParser.js"><img src="https://img.shields.io/cdnjs/v/UAParser.js.svg"></a>
 </p-->
-# UAParser-51D.js
+# 51Degrees UAParser
 
 A lightweight JavaScript library wrapping [51Degrees Device Detection](https://51degrees.com/device-detection) cloud service.  The library provides comprehensive device data based on User-Agent Client Hints and/or the User-Agent.  This package can be used either in a browser (client-side) or in Node.js environment (server-side).  Client-side supports detection of the current client or detection from an arbitrary header map, while server-side supports detection from a header map only.  
 
@@ -20,13 +20,12 @@ For a more sophisticated solution, check out 51Degrees Device Detection Node Pac
 * Author    : Roman Sertsov <roman.sertsov@postindustria.com>
 * Demo      : https://51degrees.github.io/ua-parser-js
 * Source    : https://github.com/51Degrees/ua-parser-js
-* Version   : 2.0.0
 
 # Documentation
 
 ## Usage
 
-You can use UAParser-51D.js in 3 easy steps.
+You can use 51D UAParser in 3 easy steps.
 
 1. **Install the package** using `npm` or other dependency manager such as `yarn`:
 ```
@@ -177,11 +176,11 @@ Resource Key is a required parameter. **You must create and [configure a Resourc
 
 Other properties are available, but may require the purchase of a [51Degrees pricing plan](https://51degrees.com/pricing). Follow [this guide](https://51degrees.com/documentation/_concepts__configurator.html) to create a Key from scratch if needed. 
 
-In the browser environment you don't need to pass the header map object containing either User-Agent or User-Agent Client Hints.  If not passed UAParser-51D.js will detect the current device which is executing the script.  
+In the browser environment you don't need to pass the header map object containing either User-Agent or User-Agent Client Hints.  If not passed 51D UAParser will detect the current device which is executing the script.  
 
 In the server-side environment the header map is a required parameter. You must pass User-Agent Client Hints and/or the User-Agent as part of it, or simply all headers from the request `request.headers` received by the server - it should contain the needed ones. 
 
-**Note** the `await` keyword.  Since the UAParser-51D.js uses a cloud service internally, the API is inherently asynchronous.
+**Note** the `await` keyword.  Since the 51D UAParser uses a cloud service internally, the API is inherently asynchronous.
 
 **Note** that for the current client detection in the browser you must implement [User-Agent Client Hints Delegation](#user-agent-client-hints-delegation) either via Permission-Policy header or `<meta http-equiv="Delegate-CH">` tag.
 
@@ -285,7 +284,7 @@ Then the browser will send these headers to any URL of the first-party domain, b
 
 In order for these headers to be sent to the third-party domain, the first-party server must also specify a `Permissions-Policy` header in the response.  Permissions-Policy enables cross-origin User-Agent Client Hints delegation.
 
-Since UAParser-51D.js just wraps calls to a third-party service hosted at https://cloud.51degrees.com, you must allow delegating hints to that service.
+Since 51D UAParser just wraps calls to a third-party service hosted at https://cloud.51degrees.com, you must allow delegating hints to that service.
 
 Here is the `Permissions-Policy` header that must be in your first-party server response (serving the original page content):
 
