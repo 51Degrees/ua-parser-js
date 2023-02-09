@@ -30,7 +30,7 @@ You can use UAParser-51D.js in 3 easy steps.
 
 1. **Install the package** using `npm` or other dependency manager such as `yarn`:
 ```
-npm i ua-parser-51d-js
+npm i @51degrees/ua-parser-js
 ```
 
 2. **Register and configure a Resource Key** to use with 51Degrees Cloud service [here](https://configure.51degrees.com/S6fGMDKw) - you will need it as a required parameter to pass to UAParser function.
@@ -51,7 +51,7 @@ Please note the `<meta http-equiv="Delegate-CH">` tag needed for the [User-Agent
     Sec-CH-UA-Full-Version https://cloud.51degrees.com; Sec-CH-UA-Mobile https://cloud.51degrees.com; 
     Sec-CH-UA-Platform https://cloud.51degrees.com; Sec-CH-UA-Platform-Version https://cloud.51degrees.com" />
 
-    <script src="<path to ua-parser-51d.umd.min.js>"></script>
+    <script src="/path/to/@51degrees/ua-parser.min.js>"></script>
 
     <script type="module">  
         // note the type="module" to use the top-level await
@@ -142,7 +142,7 @@ console.log('Server running at http://localhost:1337/');
 
 TypeScript is supported natively, just use a regular import syntax in TS:
 ```js
-import UAParser from 'ua-parser-51d-js';
+import UAParser from '@51degrees/ua-parser-js';
 ```
 
 ## API
@@ -195,7 +195,7 @@ result.device
 ## Migration from original UAParser.js
 
 The migration from the original [UAParser.js](https://github.com/faisalman/ua-parser-js) comes down to the following steps:
-1. For Node.js: replace the package name from `ua-parser-js` to `ua-parser-51d-js`. For the client replace script name from `ua-parser.min.js` to `ua-parser-51d.umd.min.js`.
+1. For Node.js: replace the package name from `ua-parser-js` to `@51degrees/ua-parser-js`. For the browser provide the correct path in the src attribute to the new `@51degrees/ua-parser.min.js`. 
 2. Call `UAParser` as an `async` function with the `await` keyword, or use `then` to await the Promise.
 3. Use a Resource Key to configure custom device fields. A guide to create this Key can be found [here](https://51degrees.com/documentation/_concepts__configurator.html)
 4. Pass the `header map` containing User-Agent Client Hints headers, instead of the User-Agent string as a parameter.
