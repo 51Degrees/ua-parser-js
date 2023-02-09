@@ -47,7 +47,8 @@
     "lint": "tslint -p tsconfig.json",
     "build:bundles": "cross-env BABEL_ENV=esmBundled rollup -c",
     "build": "npm-run-all -l clean -p build:bundles declarations",
-    "start": "node server.js"
+    "start": "node server.js",
+    "publish" : "np --no-2fa"
   },
   "files": [
     "lib"
