@@ -1,6 +1,7 @@
 node_modules/
 npm-debug.log
 yarn.lock
+package-lock.json
 ### vim ###
 .*.s[a-w][a-z]
 *.un~
@@ -11,7 +12,6 @@ Session.vim
 
 .env
 .env.local
-.yarn.lock
 
 ### editors ###
 .vscode
