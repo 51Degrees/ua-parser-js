@@ -160,6 +160,11 @@ const getMyHeaders = async () => {
         "Sec-CH-UA-Platform"
       ] = `"${highEntropyHeaders["platform"]}"`;
 
+    if (highEntropyHeaders["model"])
+      mappedHeaders[
+        "Sec-CH-UA-Model"
+        ] = `"${highEntropyHeaders["model"]}"`;
+
     if (highEntropyHeaders["platformVersion"])
       mappedHeaders[
         "Sec-CH-UA-Platform-Version"
