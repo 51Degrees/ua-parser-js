@@ -1,6 +1,6 @@
 {
   "name": "@51degrees/ua-parser-js",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "User-Agent and User Agent Client Hints parser. Supports the latest Chromium browsers and Apple model detection.",
   "download": "https://raw.github.com/51Degrees/ua-parser-js/main/lib/ua-parser.min.js",
   "main": "lib/ua-parser.js",
