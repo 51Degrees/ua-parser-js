@@ -3,6 +3,10 @@ name: 'Publish package'
 permissions:
   contents: write
 
+env:
+  USER_KEY_VALID: ${{ secrets.USER_KEY_VALID }}
+  USER_KEY_INVALID: ${{ secrets.USER_KEY_INVALID }}
+
 on:
   workflow_dispatch:
     inputs:
@@ -39,7 +43,7 @@ jobs:
         run: |
           git tag -af v${{ inputs.version }} -m "Version ${{ inputs.version }}"
           git push --tags --force
-#      - name: Publish to NPM
-#        run: yarn publish --access public --tag ${{ inputs.version }}
-#        env:
-#          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish to NPM
+        run: yarn publish --access public --tag ${{ inputs.version }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

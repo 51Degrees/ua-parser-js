@@ -5,7 +5,7 @@
   "download": "https://raw.github.com/51Degrees/ua-parser-js/main/lib/ua-parser.min.js",
   "main": "lib/ua-parser.js",
   "types": "lib/types/UAParser.d.ts",
-  "homepage": "https://github.com/51Degrees/ua-parser-js",
+  "homepage": "https://51degrees.github.io/ua-parser-js/",
   "demo": "https://51Degrees.github.io/ua-parser-js",
   "repository": {
     "type": "git",
@@ -47,8 +47,7 @@
     "lint": "tslint -p tsconfig.json",
     "build:bundles": "cross-env BABEL_ENV=esmBundled rollup -c",
     "build": "npm-run-all -l clean -p build:bundles declarations",
-    "start": "node server.js",
-    "publish" : "np --no-2fa"
+    "start": "node server.js"
   },
   "files": [
     "lib"
@@ -71,8 +70,5 @@
     "User-Agent",
     "UAParser"
   ],
-  "author": "Roman Sertsov <roman.sertsov@postindustria.com>",
-  "publishConfig": {
-    "access": "public"
-  }
+  "author": "Roman Sertsov <roman.sertsov@postindustria.com>"
 }
