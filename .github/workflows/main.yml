@@ -44,6 +44,6 @@ jobs:
           git tag -af v${{ inputs.version }} -m "Version ${{ inputs.version }}"
           git push --tags --force
       - name: Publish to NPM
-        run: yarn publish --access public --tag ${{ inputs.version }}
+        run: yarn publish --access public --tag latest
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

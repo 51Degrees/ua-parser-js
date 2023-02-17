@@ -5,12 +5,9 @@
   "download": "https://raw.github.com/51Degrees/ua-parser-js/main/lib/ua-parser.min.js",
   "main": "lib/ua-parser.js",
   "types": "lib/types/UAParser.d.ts",
+  "repository": "github:51Degrees/ua-parser-js",
   "homepage": "https://51degrees.github.io/ua-parser-js/",
   "demo": "https://51Degrees.github.io/ua-parser-js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/51Degrees/ua-parser-js.git"
-  },
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.20.7",
