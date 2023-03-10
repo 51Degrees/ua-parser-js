@@ -122,7 +122,7 @@ http.createServer(async function (req, res) {
   let result = await UAParser(rk,  req.headers);
   
   // a list of useful client hints to obtain from the browser
-  ch = 'Sec-CH-UA, Sec-CH-UA-Arch, Sec-CH-Bitness, Sec-CH-UA-Full-Version, \
+  ch = 'Sec-CH-UA, Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, \
         Sec-CH-UA-Full-Version-List, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, \
         Sec-CH-UA-Platform-Version, Sec-CH-UA-WoW64'
 
@@ -276,7 +276,7 @@ Any request the web browser sends contains the so-called low-entropy User-Agent 
 
 To request additional high-entropy UA-CH headers one must specify them in the `Accept-CH` header, this will tell the browser to send them in the subsequent request to the first-party server.  
 ```
-Accept-CH: Sec-CH-UA, Sec-CH-UA-Arch, Sec-CH-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List, 
+Accept-CH: Sec-CH-UA, Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List, 
 Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version, Sec-CH-UA-WoW64
 ```
 
