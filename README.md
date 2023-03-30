@@ -9,6 +9,11 @@
 <a href="https://www.jsdelivr.com/package/npm/ua-parser-js"><img src="https://data.jsdelivr.com/v1/package/npm/ua-parser-js/badge"></a>
 <a href="https://cdnjs.com/libraries/UAParser.js"><img src="https://img.shields.io/cdnjs/v/UAParser.js.svg"></a>
 </p-->
+
+<p align="center">
+    <img alt="51D Logo" src="https://51degrees.com/DesktopModules/FiftyOne/Distributor/Logo.ashx?utm_source=github&utm_medium=repository&utm_campaign=uaparser_repository" width="360" height="67"> 
+</p>
+
 # 51Degrees UAParser
 
 A lightweight JavaScript library wrapping [51Degrees Device Detection](https://51degrees.com/device-detection) cloud service.  The library provides comprehensive device data based on User-Agent Client Hints and/or the User-Agent.  This package can be used either in a browser (client-side) or in Node.js environment (server-side).  Client-side supports detection of the current client or detection from an arbitrary header map, while server-side supports detection from a header map only.  
