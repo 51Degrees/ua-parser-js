@@ -10,9 +10,7 @@
 <a href="https://cdnjs.com/libraries/UAParser.js"><img src="https://img.shields.io/cdnjs/v/UAParser.js.svg"></a>
 </p-->
 
-<p align="center">
-    <img alt="51D Logo" src="https://51degrees.com/DesktopModules/FiftyOne/Distributor/Logo.ashx?utm_source=github&utm_medium=repository&utm_campaign=uaparser_repository" width="360" height="67"> 
-</p>
+![alt text](https://51degrees.com/DesktopModules/FiftyOne/Distributor/Logo.ashx?utm_source=github&utm_medium=repository&utm_campaign=uaparser_repository)
 
 # 51Degrees UAParser
 
