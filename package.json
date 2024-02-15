@@ -1,6 +1,6 @@
 {
   "name": "@51degrees/ua-parser-js",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "User-Agent and User Agent Client Hints parser. Supports the latest Chromium browsers and Apple model detection.",
   "download": "https://raw.github.com/51Degrees/ua-parser-js/main/lib/ua-parser.min.js",
   "main": "lib/ua-parser.js",
@@ -59,13 +59,20 @@
     "lib": "lib"
   },
   "keywords": [
-    "device detection",
-    "User Agent Client Hints",
-    "Client Hints",
-    "UA-CH",
-    "CH-UA",
-    "User-Agent",
-    "UAParser"
+    "device detection", 
+    "user agent client hints", 
+    "client hints", 
+    "ua-ch",
+    "user-agent",
+    "uaparser",
+    "parser",
+    "browser",
+    "os",
+    "device",
+    "cpu",
+    "ua-parser-js",
+    "detection",
+    "51Degrees"
   ],
   "author": "Roman Sertsov <roman.sertsov@postindustria.com>"
 }
