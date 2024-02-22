@@ -8,13 +8,13 @@ import {
   RESOURCE_KEY_TAG,
 } from "../../shared/config";
 import UAParser from "../../../UAParser";
-import {USER_KEY_INVALID } from "../../../config";
+import {USER_KEY_INVALID, USER_KEY_VALID} from "../../../config";
 import { expect } from "@jest/globals";
 import { EAPIErrors } from "../../../__mocks__";
 
 describe(`${INTEGRATION_TAG}:${NODE_TAG}`, () => {
   test(`${RESOURCE_KEY_TAG}${HEADERS_TAG}: Happy path`, async () => {
-    const value = await UAParser("AQQ-BCqfO0grmzoE20g", {
+    const value = await UAParser(USER_KEY_VALID, {
       "sec-ch-ua": "Not_A Brand;v=99, Google Chrome;v=109, Chromium;v=109",
       "sec-ch-ua-arch": "x64",
       "sec-ch-ua-full-version": "109.0.5414.87",
