@@ -1,24 +1,32 @@
-<!--p align="center">
-    <img src="https://raw.githubusercontent.com/faisalman/ua-parser-js/gh-pages/images/logo.png" width="256" height="256"> 
-</p>
+# 51Degrees Device Detection and User-Agent parser for JavaScript and Node.js
 
-<p align="center">
-<a href="https://travis-ci.org/faisalman/ua-parser-js"><img src="https://travis-ci.org/faisalman/ua-parser-js.svg?branch=master"></a>
-<a href="https://www.npmjs.com/package/ua-parser-js"><img src="https://img.shields.io/npm/v/ua-parser-js.svg"></a>
-<a href="https://www.npmjs.com/package/ua-parser-js"><img src="https://img.shields.io/npm/dw/ua-parser-js.svg"></a>
-<a href="https://www.jsdelivr.com/package/npm/ua-parser-js"><img src="https://data.jsdelivr.com/v1/package/npm/ua-parser-js/badge"></a>
-<a href="https://cdnjs.com/libraries/UAParser.js"><img src="https://img.shields.io/cdnjs/v/UAParser.js.svg"></a>
-</p-->
+<img src=".github/images/logo.png" alt="51Degrees" title="Data rewards the curious" width="120">
 
-![alt text](https://51degrees.com/DesktopModules/FiftyOne/Distributor/Logo.ashx?utm_source=github&utm_medium=repository&utm_campaign=uaparser_repository)
+Our User-Agent parser for JavaScript and Node.js supports Device Detection, browser detection, mobile detection, and crawler detection in the cloud.
 
-# 51Degrees UAParser
+It reads User-Agent and User-Agent Client Hints, HTTP request headers that carry browser and device information. Our fork of [UAParser.js](https://github.com/faisalman/ua-parser-js) adds User-Agent Client Hints through the cloud service.
 
-A lightweight JavaScript library wrapping [51Degrees Device Detection](https://51degrees.com/device-detection) cloud service.  The library provides comprehensive device data based on User-Agent Client Hints and/or the User-Agent.  This package can be used either in a browser (client-side) or in Node.js environment (server-side).  Client-side supports detection of the current client or detection from an arbitrary header map, while server-side supports detection from a header map only.  
+## Install
 
-This is a fork of a popular [UAParser.js](https://github.com/faisalman/ua-parser-js) library that relied solely on a deprecated User-Agent for the local device detection.  The current library allows for an easy migration from the original UAParser.js.
+Install the npm package.
 
-For a more sophisticated solution, check out 51Degrees Device Detection Node Package: https://www.npmjs.com/package/fiftyone.devicedetection 
+```
+npm i @51degrees/ua-parser-js
+```
+
+Try the [User-Agent tester](https://51degrees.com/developers/user-agent-tester?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=install). For cloud use, [create a Resource Key](https://configure.51degrees.com/?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=install).
+
+### Example
+
+```js
+import UAParser from '@51degrees/ua-parser-js';
+```
+
+A lightweight JavaScript library wrapping [51Degrees Device Detection](https://51degrees.com/device-detection?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=example) cloud service.  The library provides comprehensive device data based on User-Agent Client Hints and/or the User-Agent.  This package can be used either in a browser (client-side) or in Node.js environment (server-side).  Client-side supports detection of the current client or detection from an arbitrary header map, while server-side supports detection from a header map only.  
+
+This is a fork of a popular [UAParser.js](https://github.com/faisalman/ua-parser-js) library that relied solely on a deprecated User-Agent for the local Device Detection.  The current library allows for an easy migration from the original UAParser.js.
+
+For a more sophisticated solution, check out the 51Degrees Device Detection Node package at https://www.npmjs.com/package/fiftyone.devicedetection 
 
 * Author    : Roman Sertsov <roman.sertsov@postindustria.com>
 * Demo      : https://51degrees.github.io/ua-parser-js
@@ -35,9 +43,9 @@ You can use 51D UAParser in 3 easy steps.
 npm i @51degrees/ua-parser-js
 ```
 
-2. **Register and configure a Resource Key** to use with 51Degrees Cloud service [here](https://configure.51degrees.com/S6fGMDKw) - you will need it as a required parameter to pass to UAParser function.
+2. **Register and configure a Resource Key** to use with 51Degrees Cloud service [here](https://configure.51degrees.com/S6fGMDKw?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=usage) - you will need it as a required parameter to pass to UAParser function.
 
-3. **Integrate the device detection code.**  Below there are usage examples for the client and server side:
+3. **Integrate the Device Detection code.**  Below there are usage examples for the client and server side:
 
 ### Client side (HTML)
 Please note the `<meta http-equiv="Delegate-CH">` tag needed for the [User-Agent Client Hints delegation](#user-agent-client-hints-delegation).
@@ -53,7 +61,7 @@ Please note the `<meta http-equiv="Delegate-CH">` tag needed for the [User-Agent
     Sec-CH-UA-Full-Version https://cloud.51degrees.com; Sec-CH-UA-Mobile https://cloud.51degrees.com; 
     Sec-CH-UA-Platform https://cloud.51degrees.com; Sec-CH-UA-Platform-Version https://cloud.51degrees.com" />
 
-    <script src="/path/to/@51degrees/ua-parser.min.js>"></script>
+    <script src="/path/to/@51degrees/ua-parser.min.js"></script>
 
     <script type="module">  
         // note the type="module" to use the top-level await
@@ -78,7 +86,7 @@ Please note the `<meta http-equiv="Delegate-CH">` tag needed for the [User-Agent
         }
 
 
-        // obtain a Resource Key at https://configure.51degrees.com/S6fGMDKw
+        // obtain a Resource Key at https://configure.51degrees.com/S6fGMDKw?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=client-side-html
         const rk = "<your resource key>"; 
 
         let result = await UAParser(rk);  // note the top-level await
@@ -98,7 +106,7 @@ This is a CommonJS example, to use a top-level `await` you need to use [ECMAScri
 An example of processing an arbitrary header map on the server:
 ```js
 
-const rk = "<your resource key>"; // obtain a Resource Key at https://configure.51degrees.com/S6fGMDKw
+const rk = "<your resource key>"; // obtain a Resource Key at https://configure.51degrees.com/S6fGMDKw?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=server-side-node.js
 
 // an example of processing an arbitrary header map:
 const context = async () => {
@@ -157,9 +165,9 @@ let result = await UAParser(resource-key[,header map])
 
 UAParser returns a Promise object that resolves to the [Result](#result-object) object.
 
-Resource Key is a required parameter. **You must create and [configure a Resource Key](https://configure.51degrees.com/S6fGMDKw).** 
+Resource Key is a required parameter. **You must create and [configure a Resource Key](https://configure.51degrees.com/S6fGMDKw?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=api).** 
 
-**Note:** Following [this link to create a Resource Key](https://configure.51degrees.com/S6fGMDKw) will prepopulate your Key with the recommended minimum properties. The properties included are:
+**Note:** Following [this link to create a Resource Key](https://configure.51degrees.com/S6fGMDKw?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=api) will prepopulate your Key with the recommended minimum properties. The properties included are:
 - `IsMobile`
 - `HardwareVendor`
 - `HardwareModel`
@@ -171,13 +179,13 @@ Resource Key is a required parameter. **You must create and [configure a Resourc
 - `BrowserVendor`
 - `BrowserName`
 - `BrowserVersion`
-- `JavascriptHardwareProfile` – the Resource Key must contain the `JavascriptHardwareProfile` property in order to do a reliable detection of Apple devices.
+- `JavascriptHardwareProfile`. The Resource Key must contain the `JavascriptHardwareProfile` property in order to do a reliable detection of Apple devices.
 - `DeviceType`
 - `SetHeaderBrowserAccept-CH`
 - `SetHeaderHardwareAccept-CH`
 - `SetHeaderPlatformAccept-CH`
 
-Other properties are available, but may require the purchase of a [51Degrees pricing plan](https://51degrees.com/pricing). Follow [this guide](https://51degrees.com/documentation/_concepts__configurator.html) to create a Key from scratch if needed. 
+Other properties are available, but may require the purchase of a [51Degrees pricing plan](https://51degrees.com/pricing?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=api). Follow [this guide](https://51degrees.com/documentation/_concepts__configurator.html?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=api) to create a Key from scratch if needed. 
 
 In the browser environment you don't need to pass the header map object containing either User-Agent or User-Agent Client Hints.  If not passed 51D UAParser will detect the current device which is executing the script.  
 
@@ -192,14 +200,14 @@ Result object contains the `device` object with all the detected device properti
 ```
 result.device
 ```
-51Degrees maintains the [rigid data model](http://51degrees.com/developers/property-dictionary).  The device data is maintained by a professional team of data analysts and is updated daily Monday through Thursday. 
+51Degrees maintains the [rigid data model](https://51degrees.com/developers/property-dictionary?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=result-object).  The device data is maintained by a professional team of data analysts and is updated daily Monday through Thursday. 
 
 ## Migration from original UAParser.js
 
 The migration from the original [UAParser.js](https://github.com/faisalman/ua-parser-js) comes down to the following steps:
-1. For Node.js: replace the package name from `ua-parser-js` to `@51degrees/ua-parser-js`. For the browser provide the correct path in the src attribute to the new `@51degrees/ua-parser.min.js`. 
+1. For Node.js, replace the package name from `ua-parser-js` to `@51degrees/ua-parser-js`. For the browser provide the correct path in the src attribute to the new `@51degrees/ua-parser.min.js`. 
 2. Call `UAParser` as an `async` function with the `await` keyword, or use `then` to await the Promise.
-3. Use a Resource Key to configure custom device fields. A guide to create this Key can be found [here](https://51degrees.com/documentation/_concepts__configurator.html)
+3. Use a Resource Key to configure custom device fields. A guide to create this Key can be found [here](https://51degrees.com/documentation/_concepts__configurator.html?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=migration-from-original-uaparser.js)
 4. Pass the `header map` containing User-Agent Client Hints headers, instead of the User-Agent string as a parameter.
 5. For the client side / html integration - implement either Accept-CH + Permission-Policy headers on your server or Delegate-CH http-equiv meta tag in order to delegate User-Agent Client Hints to 51Degrees Cloud service as described [here](#user-agent-client-hints-delegation).
 
@@ -265,14 +273,14 @@ Besides maintaining the mappings to the original UAParser properties, 51Degrees 
 }
 ```
 
-Please refer to the [51Degrees Configurator](https://configure.51degrees.com) for a full list of the data points available.
+Please refer to the [property selection page](https://configure.51degrees.com?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=new-data-points) for a full list of the data points available.
 
 
-## User-Agent Client Hints Delegation
+## User-Agent Client Hints delegation
 
 Migrating to User-Agent Client Hints for your web app is well described in many sources, for example, this WICG [draft report on UA-CH](https://wicg.github.io/ua-client-hints/) or this human-readable [article](https://web.dev/migrate-to-ua-ch/).
 
-Any request the web browser sends contains the so-called low-entropy User-Agent Client Hints, namely these three:
+Browsers that support User-Agent Client Hints send the so-called low-entropy hints by default with every request to an HTTPS site, namely these three:
 - `Sec-CH-UA`
 - `Sec-CH-UA-Mobile`
 - `Sec-CH-UA-Platform`
@@ -301,7 +309,7 @@ ch-ua-full-version-list=("https://cloud.51degrees.com"), ch-ua-wow64=("https://c
 
 **Note:** `Accept-CH` header must also be set. 
 
-### User-Agent Client Hints Delegation in HTML
+### User-Agent Client Hints delegation in HTML
 Alternatively (in case you can't modify your server headers), you can provide a <meta http-equiv="Delegate-CH"> tag in the page header: 
 
 ```html
@@ -310,5 +318,9 @@ Sec-CH-UA https://cloud.51degrees.com; Sec-CH-UA-Arch https://cloud.51degrees.co
 Sec-CH-UA-Full-Version https://cloud.51degrees.com; Sec-CH-UA-Mobile https://cloud.51degrees.com; 
 Sec-CH-UA-Platform https://cloud.51degrees.com; Sec-CH-UA-Platform-Version https://cloud.51degrees.com" />
 ```
+## Find out more
 
-
+- [Device Detection](https://51degrees.com/device-detection?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=find-out-more)
+- [Bots and humans](https://51degrees.com/bots-and-humans?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=find-out-more)
+- [Documentation](https://51degrees.com/documentation/index.html?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=find-out-more)
+- https://github.com/51Degrees/51degrees-cxx
