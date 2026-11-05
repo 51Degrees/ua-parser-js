@@ -36,9 +36,13 @@
     <main>
       <section class="container">
         <script type="module">
-          const value = await UAParser("__USER_KEY_VALID__");
           const element = document.getElementById("resolve");
-          element.textContent = JSON.stringify(value, undefined, 2);
+          try {
+            const value = await UAParser("__USER_KEY_VALID__");
+            element.textContent = JSON.stringify(value, undefined, 2);
+          } catch (error) {
+            element.textContent = JSON.stringify({ error: String(error) });
+          }
         </script>
         <h4>Response</h4>
         <pre><code id="resolve"></code></pre>

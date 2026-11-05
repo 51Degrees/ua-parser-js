@@ -21,10 +21,15 @@ describe(`${BROWSER_TAG}${DOM_TAG}: Integration`, () => {
         waitUntil: 'domcontentloaded',
         timeout: 10000,
       });
-      await page.waitForTimeout(2000);
-      await page.waitForSelector('#resolve');
+      // The cloud's script resolves the result once its own requests are
+      // done, so wait for the page to write it rather than for a set time.
+      await page.waitForFunction(
+        () => document.getElementById('resolve')?.textContent,
+        { timeout: 20000 },
+      );
       const value = await page.$eval('#resolve', el => JSON.parse(el.textContent));
 
+      expect(value.error).toBeUndefined();
       expect(value.device.platformname).not.toBeUndefined();
       expect(value.device.platformname.toLowerCase()).not.toEqual('unknown');
     } finally {
