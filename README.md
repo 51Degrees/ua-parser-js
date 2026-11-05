@@ -185,7 +185,7 @@ Resource Key is a required parameter. **You must create and [configure a Resourc
 - `SetHeaderHardwareAccept-CH`
 - `SetHeaderPlatformAccept-CH`
 
-Other properties are available, but may require the purchase of a [51Degrees pricing plan](https://51degrees.com/pricing?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=api). Follow [this guide](https://51degrees.com/documentation/_concepts__configurator.html?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=api) to create a Key from scratch if needed. 
+Other properties are available, but may require the purchase of a [51Degrees pricing plan](https://51degrees.com/pricing?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=api). Follow [this guide](https://51degrees.com/documentation/_services__configurator.html?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=api) to create a Key from scratch if needed. 
 
 In the browser environment you don't need to pass the header map object containing either User-Agent or User-Agent Client Hints.  If not passed 51D UAParser will detect the current device which is executing the script.  
 
@@ -207,7 +207,7 @@ result.device
 The migration from the original [UAParser.js](https://github.com/faisalman/ua-parser-js) comes down to the following steps:
 1. For Node.js, replace the package name from `ua-parser-js` to `@51degrees/ua-parser-js`. For the browser provide the correct path in the src attribute to the new `@51degrees/ua-parser.min.js`. 
 2. Call `UAParser` as an `async` function with the `await` keyword, or use `then` to await the Promise.
-3. Use a Resource Key to configure custom device fields. A guide to create this Key can be found [here](https://51degrees.com/documentation/_concepts__configurator.html?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=migration-from-original-uaparser.js)
+3. Use a Resource Key to configure custom device fields. A guide to create this Key can be found [here](https://51degrees.com/documentation/_services__configurator.html?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=migration-from-original-uaparser.js)
 4. Pass the `header map` containing User-Agent Client Hints headers, instead of the User-Agent string as a parameter.
 5. For the client side / html integration - implement either Accept-CH + Permission-Policy headers on your server or Delegate-CH http-equiv meta tag in order to delegate User-Agent Client Hints to 51Degrees Cloud service as described [here](#user-agent-client-hints-delegation).
 
