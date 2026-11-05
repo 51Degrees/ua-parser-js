@@ -27,9 +27,6 @@ describe(`${BROWSER_TAG}${DOM_TAG}: Integration`, () => {
 
       expect(value.device.platformname).not.toBeUndefined();
       expect(value.device.platformname.toLowerCase()).not.toEqual('unknown');
-    } catch (e) {
-      console.log(e)
-      await browser.close();
     } finally {
       await browser.close();
     }
