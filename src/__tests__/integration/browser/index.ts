@@ -14,8 +14,15 @@ describe(`${BROWSER_TAG}${DOM_TAG}: Integration`, () => {
   jest.setTimeout(10000);
   test('Happy injection', async () => {
     const browser = await puppeteer.launch({ headless: 'new', args: LAUNCH_ARGS });
+    // The key carries the location product, whose script asks for the
+    // browser's location and waits for the answer, which headless Chrome never
+    // gives, so the page is allowed a location as a visitor would allow it.
+    await browser
+      .defaultBrowserContext()
+      .overridePermissions('http://localhost:8080', ['geolocation']);
     try {
       const page = await browser.newPage();
+      await page.setGeolocation({ latitude: 51.45, longitude: -0.97 });
       await page.setViewport({ width: 1280, height: 720 });
       await page.goto('http://localhost:8080/page-using-rkey', {
         waitUntil: 'domcontentloaded',
