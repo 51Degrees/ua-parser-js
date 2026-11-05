@@ -6,10 +6,14 @@ import { expect, jest } from "@jest/globals";
 import { BROWSER_TAG, DOM_TAG, RESOURCE_KEY_TAG } from "../../shared/config";
 import puppeteer from "puppeteer";
 
+// Chrome cannot start its sandbox on the GitHub hosted Ubuntu runners, so CI
+// launches it without, as jest-puppeteer.config.js does.
+const LAUNCH_ARGS = process.env.CI ? ["--no-sandbox", "--disable-setuid-sandbox"] : [];
+
 describe(`${BROWSER_TAG}${DOM_TAG}: Integration`, () => {
   jest.setTimeout(10000);
   test('Happy injection', async () => {
-    const browser = await puppeteer.launch({ headless: 'new' });
+    const browser = await puppeteer.launch({ headless: 'new', args: LAUNCH_ARGS });
     try {
       const page = await browser.newPage();
       await page.setViewport({ width: 1280, height: 720 });
@@ -31,7 +35,7 @@ describe(`${BROWSER_TAG}${DOM_TAG}: Integration`, () => {
     }
   }, 30000);
   test(`Happy request with headers`, async () => {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({ args: LAUNCH_ARGS });
     const page = await browser.newPage();
 
     await page.goto("http://localhost:8080/page-using-rkey-headers", {
