@@ -6,32 +6,45 @@ import { expect, jest } from "@jest/globals";
 import { BROWSER_TAG, DOM_TAG, RESOURCE_KEY_TAG } from "../../shared/config";
 import puppeteer from "puppeteer";
 
+// Chrome cannot start its sandbox on the GitHub hosted Ubuntu runners, so CI
+// launches it without, as jest-puppeteer.config.js does.
+const LAUNCH_ARGS = process.env.CI ? ["--no-sandbox", "--disable-setuid-sandbox"] : [];
+
 describe(`${BROWSER_TAG}${DOM_TAG}: Integration`, () => {
   jest.setTimeout(10000);
   test('Happy injection', async () => {
-    const browser = await puppeteer.launch({ headless: 'new' });
+    const browser = await puppeteer.launch({ headless: 'new', args: LAUNCH_ARGS });
+    // The key carries the location product, whose script asks for the
+    // browser's location and waits for the answer, which headless Chrome never
+    // gives, so the page is allowed a location as a visitor would allow it.
+    await browser
+      .defaultBrowserContext()
+      .overridePermissions('http://localhost:8080', ['geolocation']);
     try {
       const page = await browser.newPage();
+      await page.setGeolocation({ latitude: 51.45, longitude: -0.97 });
       await page.setViewport({ width: 1280, height: 720 });
       await page.goto('http://localhost:8080/page-using-rkey', {
         waitUntil: 'domcontentloaded',
         timeout: 10000,
       });
-      await page.waitForTimeout(2000);
-      await page.waitForSelector('#resolve');
+      // The cloud's script resolves the result once its own requests are
+      // done, so wait for the page to write it rather than for a set time.
+      await page.waitForFunction(
+        () => document.getElementById('resolve')?.textContent,
+        { timeout: 20000 },
+      );
       const value = await page.$eval('#resolve', el => JSON.parse(el.textContent));
 
+      expect(value.error).toBeUndefined();
       expect(value.device.platformname).not.toBeUndefined();
       expect(value.device.platformname.toLowerCase()).not.toEqual('unknown');
-    } catch (e) {
-      console.log(e)
-      await browser.close();
     } finally {
       await browser.close();
     }
   }, 30000);
   test(`Happy request with headers`, async () => {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({ args: LAUNCH_ARGS });
     const page = await browser.newPage();
 
     await page.goto("http://localhost:8080/page-using-rkey-headers", {

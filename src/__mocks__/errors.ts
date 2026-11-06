@@ -5,7 +5,8 @@ import { USER_KEY_INVALID } from "../config";
 
 // TODO: Change API messages to actual server messages
 const EAPIErrors = {
-  NON_EXISING_ON_SERVER_ERROR: `The Resource Key '${USER_KEY_INVALID}' was not found. See http://51degrees.com/documentation/_info__error_messages.html#Resource_key_not_recognized for more information.`,
+  // The start of the cloud's message for a resource key it cannot find.
+  NON_EXISING_ON_SERVER_ERROR: `The resource key '${USER_KEY_INVALID}' could not be found.`,
   INTERNAL_SERVER_ERROR: "Internal server error",
   REQUEST_LIMIT_REACHED_ERROR:
     "Rate limiting for the resource key",

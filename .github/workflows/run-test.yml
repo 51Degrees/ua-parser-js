@@ -6,7 +6,9 @@ permissions:
   contents: read
 
 env:
-  USER_KEY_VALID: ${{ secrets.USER_KEY_VALID }}
+  # The organisation's test key, which carries the properties the tests
+  # read. The repository's own is a free key without them.
+  USER_KEY_VALID: ${{ secrets._51DEGREES_RESOURCE_KEY_BESPOKE }}
   USER_KEY_INVALID: ${{ secrets.USER_KEY_INVALID }}
 
 jobs:

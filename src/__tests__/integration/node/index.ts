@@ -30,12 +30,14 @@ describe(`${INTEGRATION_TAG}:${NODE_TAG}`, () => {
     expect(value.device.platformversion).toEqual("12.2.1");
   });
   test(`${RESOURCE_KEY_TAG}${HEADERS_TAG}: Key not valid`, async () => {
+    // The cloud's message goes on to say where to create a key, so only its
+    // start is matched.
     await expect(
       UAParser(USER_KEY_INVALID, {
         "Sec-CH-UA-Platform": "Windows",
         "user-agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36",
       }),
-    ).rejects.toThrow(new Error(EAPIErrors.NON_EXISING_ON_SERVER_ERROR));
+    ).rejects.toThrow(EAPIErrors.NON_EXISING_ON_SERVER_ERROR);
   });
 });
