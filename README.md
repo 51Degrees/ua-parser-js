@@ -14,7 +14,7 @@ Install the npm package.
 npm i @51degrees/ua-parser-js
 ```
 
-Try the [User-Agent tester](https://51degrees.com/developers/user-agent-tester?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=install). For cloud use, [create a Resource Key](https://configure.51degrees.com/?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=install).
+Try the [User-Agent tester](https://51degrees.com/developers/user-agent-tester?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=install). For cloud use, [create a Resource Key](https://51degrees.com/configure/?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=install).
 
 ### Example
 
@@ -43,7 +43,7 @@ You can use 51D UAParser in 3 easy steps.
 npm i @51degrees/ua-parser-js
 ```
 
-2. **Register and configure a Resource Key** to use with 51Degrees Cloud service [here](https://configure.51degrees.com/S6fGMDKw?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=usage) - you will need it as a required parameter to pass to UAParser function.
+2. **Register and configure a Resource Key** to use with 51Degrees Cloud service [here](https://51degrees.com/configure/S6fGMDKw?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=usage) - you will need it as a required parameter to pass to UAParser function.
 
 3. **Integrate the Device Detection code.**  Below there are usage examples for the client and server side:
 
@@ -86,7 +86,7 @@ Please note the `<meta http-equiv="Delegate-CH">` tag needed for the [User-Agent
         }
 
 
-        // obtain a Resource Key at https://configure.51degrees.com/S6fGMDKw?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=client-side-html
+        // obtain a Resource Key at https://51degrees.com/configure/S6fGMDKw?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=client-side-html
         const rk = "<your resource key>"; 
 
         let result = await UAParser(rk);  // note the top-level await
@@ -106,7 +106,7 @@ This is a CommonJS example, to use a top-level `await` you need to use [ECMAScri
 An example of processing an arbitrary header map on the server:
 ```js
 
-const rk = "<your resource key>"; // obtain a Resource Key at https://configure.51degrees.com/S6fGMDKw?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=server-side-node.js
+const rk = "<your resource key>"; // obtain a Resource Key at https://51degrees.com/configure/S6fGMDKw?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=server-side-node.js
 
 // an example of processing an arbitrary header map:
 const context = async () => {
@@ -165,9 +165,9 @@ let result = await UAParser(resource-key[,header map])
 
 UAParser returns a Promise object that resolves to the [Result](#result-object) object.
 
-Resource Key is a required parameter. **You must create and [configure a Resource Key](https://configure.51degrees.com/S6fGMDKw?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=api).** 
+Resource Key is a required parameter. **You must create and [configure a Resource Key](https://51degrees.com/configure/S6fGMDKw?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=api).** 
 
-**Note:** Following [this link to create a Resource Key](https://configure.51degrees.com/S6fGMDKw?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=api) will prepopulate your Key with the recommended minimum properties. The properties included are:
+**Note:** Following [this link to create a Resource Key](https://51degrees.com/configure/S6fGMDKw?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=api) will prepopulate your Key with the recommended minimum properties. The properties included are:
 - `IsMobile`
 - `HardwareVendor`
 - `HardwareModel`
@@ -273,7 +273,7 @@ Besides maintaining the mappings to the original UAParser properties, 51Degrees 
 }
 ```
 
-Please refer to the [property selection page](https://configure.51degrees.com?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=new-data-points) for a full list of the data points available.
+Please refer to the [property selection page](https://51degrees.com/configure?utm_source=github&utm_medium=readme&utm_campaign=ua-parser-js&utm_content=readme&utm_term=new-data-points) for a full list of the data points available.
 
 
 ## User-Agent Client Hints delegation
