@@ -1,5 +1,8 @@
 name: 'Publish package'
 
+# Publishes the version that package.json holds. Only a commit changes that
+# version, so a run cannot move it.
+
 permissions:
   contents: write
 
@@ -11,27 +14,15 @@ env:
 
 on:
   workflow_dispatch:
-    inputs:
-      version:
-        description: 'Enter version'
-        default: '2.0.0'
-        required: false
-        type: string
 
 jobs:
   publish-package:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Create Git Identity
-        run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor }}@users.noreply.github.com"
-      - name: Clean cache
-        run: yarn cache clean --force
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      # The runner's own Node.js, the same one the tests run on.
+      - uses: actions/setup-node@v4
         with:
-          node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
       - name: Install dependencies
         run: yarn install
@@ -39,13 +30,17 @@ jobs:
         run: yarn run build
       - name: Run tests
         run: yarn run test
-      - name: Bump version
-        run: yarn version --new-version ${{ inputs.version }} && git push
-      - name: Create git tag
-        run: |
-          git tag -af v${{ inputs.version }} -m "Version ${{ inputs.version }}"
-          git push --tags --force
-      - name: Publish to NPM
-        run: yarn publish --access public --tag latest
+      - name: Publish to npm
+        run: yarn publish --access public --tag latest --non-interactive
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # The organization's npm token, which the other 51Degrees npm
+          # packages publish with.
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      # Tagged only once the version is on npm.
+      - name: Tag the published version
+        run: |
+          version=$(node -p "require('./package.json').version")
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git tag -a "v$version" -m "Version $version"
+          git push origin "v$version"
