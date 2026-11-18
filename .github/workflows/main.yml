@@ -33,7 +33,7 @@ jobs:
       - name: Publish to npm
         run: yarn publish --access public --tag latest --non-interactive
         env:
-          # The organisation's npm token, which the other 51Degrees npm
+          # The organization's npm token, which the other 51Degrees npm
           # packages publish with.
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
       # Tagged only once the version is on npm.
