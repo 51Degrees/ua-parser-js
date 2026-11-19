@@ -1,0 +1,146 @@
+/* Layout fixes for the demo page, loaded after the page's built styles. */
+
+.container {
+  width: calc(100% - 32px);
+}
+
+header {
+  position: relative;
+  padding: 24px 0;
+}
+header a {
+  display: inline-block;
+}
+header img {
+  width: 164px;
+  height: auto;
+}
+
+/* The hero is a two column grid, text then product box, so the box can
+   never sit on top of the text. */
+.meet-51deg {
+  background-image: none;
+  padding: 24px 0 0;
+}
+.meet-51deg .container:before {
+  height: calc(100% + 64px);
+}
+.meet-51deg .inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 380px);
+  gap: 48px;
+  align-items: center;
+  padding: 48px 40px 0;
+}
+.meet-51deg .description {
+  max-width: none;
+}
+.meet-51deg p {
+  margin: 0 0 20px;
+}
+.meet-51deg .button {
+  margin-top: 36px;
+}
+.meet-51deg .hero-box {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Headings in sentence case, as written. */
+.playground h2,
+.less-is-more h2 {
+  text-transform: none;
+}
+
+.less-is-more .articles {
+  grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+}
+
+.getstarted h2 {
+  grid-area: title;
+  font-family: "Lilita One";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 3.8147rem;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  color: #e62d39;
+  margin: 0 0 30px;
+}
+
+.find-out-more {
+  margin-bottom: 80px;
+}
+.find-out-more .inner {
+  border-top: 4px solid #e62d39;
+  padding-top: 32px;
+}
+.find-out-more h2 {
+  font-family: "Lilita One";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 34px;
+  letter-spacing: 0.03em;
+  color: #222628;
+  margin: 0 0 24px;
+}
+.find-out-more .columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: 16px 48px;
+}
+.find-out-more .list-title {
+  font-family: "Verdana";
+  font-weight: 700;
+  font-size: 16px;
+  color: #222628;
+  margin: 0 0 12px;
+}
+.find-out-more ul {
+  margin: 0;
+  padding-left: 20px;
+}
+.find-out-more li {
+  font-family: "Verdana";
+  font-size: 14px;
+  line-height: 22px;
+  color: #373a3a;
+  margin-bottom: 10px;
+}
+.find-out-more a {
+  color: #1c5ca1;
+}
+.find-out-more .repos a {
+  overflow-wrap: anywhere;
+}
+
+@media only screen and (max-width: 900px) {
+  .meet-51deg .inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+    padding: 32px 0 0;
+  }
+  .meet-51deg .hero-box {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  .meet-51deg .container:before {
+    content: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .meet-51deg {
+    padding: 0;
+  }
+  .meet-51deg h1 {
+    font-size: 40px;
+    line-height: 46px;
+  }
+  .getstarted h2 {
+    font-size: 3.2147rem;
+    text-align: center;
+  }
+}

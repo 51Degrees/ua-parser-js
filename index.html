@@ -27,47 +27,63 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
     />
+    <meta
+      name="description"
+      content="UAParser is a small JavaScript package that tells you the device, operating system, and browser of each visitor, using the 51Degrees cloud service."
+    />
     <script type="module" crossorigin src="/ua-parser-js/assets/index-b1e3f160.js"></script>
     <link rel="stylesheet" href="/ua-parser-js/assets/index-9be9c788.css">
+    <link rel="stylesheet" href="/ua-parser-js/assets/demo-page.css">
   </head>
   <body>
     <main>
       <header>
   <div class="container">
-    <img src="https://51degrees.com/DesktopModules/FiftyOne/Distributor/Logo.ashx?utm_source=github&utm_medium=repository&utm_campaign=uaparser_demo_page" alt="51Deg Logo" />
+    <a href="https://51degrees.com/?utm_source=github&utm_medium=example&utm_campaign=ua-parser-js&utm_content=index.html&utm_term=body"
+      ><img src="/ua-parser-js/assets/51degrees-logo.png" alt="51Degrees" width="164" height="31"
+    /></a>
   </div>
 </header>
  <section class="meet-51deg">
   <div class="container">
     <div class="inner">
       <div class="description">
-        <span>Meet the new</span>
+        <span>Device Detection for JavaScript</span>
         <h1>51Degrees <b>UAParser</b></h1>
         <p>
-          A lightweight JavaScript library wrapping
-          <a href="https://51degrees.com/device-detection"
+          Know which device, operating system, and browser each visitor is
+          using. UAParser is a small JavaScript package that reads the
+          User-Agent and User-Agent Client Hints, then gets the answer from
+          <a href="https://51degrees.com/device-detection?utm_source=github&utm_medium=example&utm_campaign=ua-parser-js&utm_content=index.html&utm_term=51degrees-uaparser"
             >51Degrees Device Detection</a
           >
-          cloud service. The library provides comprehensive device data based on
-          User-Agent Client Hints and/or the User-Agent. This package can be
-          used either in a browser (client-side) or Node.js environment
-          (server-side).
-          <br /><br />
-          Client-side supports both detection of the current client and
-          detection from an arbitrary header map, while server-side supports
-          detection from a header map only.
+          in the 51Degrees cloud service.
+        </p>
+        <p>
+          Use it in the browser to detect the current visitor, or in Node.js
+          with the HTTP headers you pass in. A free Resource Key returns the
+          device type. A paid plan adds the browser, the operating system, and
+          the hardware vendor and model, iPhones and iPads included. This
+          page's key is on a paid plan, so the playground shows them all.
         </p>
         <a href="https://www.npmjs.com/package/@51degrees/ua-parser-js#usage" class="button">
           <i class="icon download-icon"></i>
-          Free download</a
+          Install from npm</a
         >
       </div>
+      <img
+        class="hero-box"
+        src="/ua-parser-js/assets/box-387e307f.png"
+        alt=""
+        width="1260"
+        height="1386"
+      />
     </div>
   </div>
 </section>
  <section class="playground">
   <div class="container">
-    <h2>User-Agent Data Playground</h2>
+    <h2>User-Agent data playground</h2>
     <div class="inner">
       <div class="CH-data">
         <div class="CH-data__headers">
@@ -151,7 +167,7 @@ sec-ch-ua-platform-version: "10.0.0"'
       </div>
       <div class="specific-headers">
         <span
-          >Specify another set of User-Agent and/or User-Agent Client Hint
+          >Or paste your own User-Agent and User-Agent Client Hints
           headers:</span
         >
         <textarea name="" id="headers-list">
@@ -167,59 +183,57 @@ Header2: value2</textarea
 </section>
  <section class="less-is-more">
   <div class="container">
-    <h2>Less is More</h2>
+    <h2>Less is more</h2>
     <div class="articles">
       <article>
         <h3>Extensive device data</h3>
         <p>
-          51Degrees UAParser provides access to the
-          <a href="https://configure.51degrees.com/">51Degrees Cloud service</a
-          >, which can identify over 200 different device properties, such as
-          platform, browser, engine, CPU, and vendors.
+          UAParser gets its answers from the 51Degrees cloud service, which
+          offers over 200
+          <a href="https://51degrees.com/developers/property-dictionary?utm_source=github&utm_medium=example&utm_campaign=ua-parser-js&utm_content=index.html&utm_term=extensive-device-data"
+            >device properties</a
+          >, such as the platform, browser, layout engine, CPU, and vendor.
         </p>
       </article>
       <article>
         <h3>Small library footprint</h3>
         <p>
-          The 51Degrees UAParser library footprint is a tiny 13KB, which is smaller
-          than many other available User-Agent parsers available.
+          The minified library is about 16 KB, so it adds very little to your
+          page.
         </p>
       </article>
       <article>
         <h3>Open source with a freemium model</h3>
         <p>
-          We recognize the value of open source – that’s why the 51Degrees UAParser
-          library is freely available with a limited set of data properties. If
-          you require extra data points or more requests per month, we offer
-          different
-          <a href="https://51degrees.com/pricing">pricing plans</a> to suit your
-          needs.
+          UAParser is open source and free to use with a limited set of
+          properties. If you need more properties or more requests a month,
+          choose one of our
+          <a href="https://51degrees.com/pricing?utm_source=github&utm_medium=example&utm_campaign=ua-parser-js&utm_content=index.html&utm_term=open-source-with-a-freemium-model">pricing plans</a>.
         </p>
       </article>
       <article>
         <h3>Client-side and server-side</h3>
         <p>
-          Whether it's a client-side webpage running in a browser or a
-          server-side Node.js app, simply type:
+          Whether it's a web page in a browser or a Node.js app on your server,
+          install it with:
         </p>
         <code>$ npm i @51degrees/ua-parser-js --save</code>
       </article>
       <article>
         <h3>Detect Apple devices</h3>
         <p>
-          Unlike some other User-Agent parsers, 51Degrees UAParser can reliably
-          detect Apple device data. See what results you can expect from our
+          Unlike some other User-Agent parsers, UAParser can tell iPhone and
+          iPad models apart with a paid plan. See what to expect from
           <a
-            href="https://51degrees.com/documentation/_device_detection__features__apple_device_table.html"
-            >Apple device detection.</a
-          >
+            href="https://51degrees.com/documentation/_device_detection__features__apple_detection.html?utm_source=github&utm_medium=example&utm_campaign=ua-parser-js&utm_content=index.html&utm_term=detect-apple-devices"
+            >Apple model detection</a
+          >.
         </p>
       </article>
       <article>
         <h3>A human touch</h3>
         <p>
-          The device data is maintained and updated by a professional data
-          analyst team on a regular basis.
+          Our team of data analysts keeps the device data up to date.
         </p>
       </article>
     </div>
@@ -228,19 +242,18 @@ Header2: value2</textarea
  <section class="getstarted">
     <div class="container">
         <div class="inner">
-            <b>Getting started</b>
+            <h2>Getting started</h2>
             <p>
-                To get started with 51Degrees UAParser, please follow the instructions within the <a href="https://github.com/51Degrees/ua-parser-js/blob/main/README.md" target="_blank">GitHub README file</a>.
+                Follow the steps in the <a href="https://github.com/51Degrees/ua-parser-js#readme" target="_blank">README on GitHub</a> to add UAParser to your project.
                 <br> <br>
-                Creating a Resource Key is a requirement in order for 51Degrees UAParser to work; <a href="https://configure.51degrees.com/S6fGMDKw" target="_blank">follow this link to configure a Resource Key</a>.
-                Please note, following this link will prepopulate your Key with the recommended minimum properties. Other properties are available, but may require the purchase of a
-                <a href="https://51degrees.com/pricing" target="_blank">51Degrees pricing plan</a>.
+                UAParser needs a Resource Key. <a href="https://51degrees.com/configure/S6fGMDKw?utm_source=github&utm_medium=example&utm_campaign=ua-parser-js&utm_content=index.html&utm_term=getting-started" target="_blank">Create one from this link</a>, which opens with the main device properties ticked. Some of them need a
+                <a href="https://51degrees.com/pricing?utm_source=github&utm_medium=example&utm_campaign=ua-parser-js&utm_content=index.html&utm_term=getting-started" target="_blank">paid plan</a>.
                 <br><br>
-                You can also follow <a href="https://51degrees.com/documentation/_concepts__configurator.html">our Configurator guide</a> to create a Key from scratch if needed. Note that if you require reliable detection of Apple devices, the Resource Key must contain the JavascriptHardwareProfile property.
+                To choose your own properties, see <a href="https://51degrees.com/documentation/_services__cloud__resource_keys.html?utm_source=github&utm_medium=example&utm_campaign=ua-parser-js&utm_content=index.html&utm_term=getting-started">our guide to Resource Keys</a>. For reliable Apple detection, include the JavascriptHardwareProfile property.
                 <br><br>
-                For a live demo of the 51Degrees UAParser, <a href="https://vimeo.com/805500329" target="_blank">check out our webinar</a>.
+                Want to see it in action? <a href="https://vimeo.com/805500329" target="_blank">Watch our webinar</a>.
             </p>
-            <span>The minimum recommended properties to include in your Resource Key are:</span>
+            <span>The recommended properties for your Resource Key are:</span>
             <ul class="custom-list">
                 <li>IsMobile</li>
                 <li>HardwareVendor, HardwareModel, HardwareName</li>
@@ -269,15 +282,43 @@ Header2: value2</textarea
         </p>
       </div>
       <a href="https://www.npmjs.com/package/@51degrees/ua-parser-js#usage" class="button">
-        <i class="icon download-icon"></i> Free download
+        <i class="icon download-icon"></i> Install from npm
       </a>
+    </div>
+  </div>
+</section>
+ <section class="find-out-more" id="find-out-more">
+  <div class="container">
+    <div class="inner">
+      <h2>Find out more</h2>
+      <div class="columns">
+        <div>
+          <p class="list-title">On 51degrees.com</p>
+          <ul>
+            <li><a href="https://51degrees.com/device-detection?utm_source=github&utm_medium=example&utm_campaign=ua-parser-js&utm_content=index.html&utm_term=find-out-more">Device Detection</a> product page</li>
+            <li><a href="https://51degrees.com/developers/user-agent-tester?utm_source=github&utm_medium=example&utm_campaign=ua-parser-js&utm_content=index.html&utm_term=find-out-more">User-Agent tester</a>, to try any User-Agent</li>
+            <li><a href="https://51degrees.com/documentation/_device_detection__overview.html?utm_source=github&utm_medium=example&utm_campaign=ua-parser-js&utm_content=index.html&utm_term=find-out-more">Device Detection documentation</a></li>
+            <li><a href="https://51degrees.com/pricing?utm_source=github&utm_medium=example&utm_campaign=ua-parser-js&utm_content=index.html&utm_term=find-out-more">Pricing</a>, for the browser, operating system, and hardware properties</li>
+            <li><a href="https://51degrees.com/contact-us?utm_source=github&utm_medium=example&utm_campaign=ua-parser-js&utm_content=index.html&utm_term=find-out-more">Contact us</a> about the properties you need</li>
+          </ul>
+        </div>
+        <div>
+          <p class="list-title">Source code</p>
+          <ul class="repos">
+            <li><a href="https://github.com/51Degrees/ua-parser-js">https://github.com/51Degrees/ua-parser-js</a></li>
+            <li><a href="https://github.com/51Degrees/51degrees-node">https://github.com/51Degrees/51degrees-node</a></li>
+            <li><a href="https://github.com/51Degrees/51degrees-cxx">https://github.com/51Degrees/51degrees-cxx</a></li>
+            <li><a href="https://www.npmjs.com/package/@51degrees/ua-parser-js">https://www.npmjs.com/package/@51degrees/ua-parser-js</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
       <footer>
         <div class="container">
-          <img src="/ua-parser-js/assets/logo-c2eb24fb.svg" alt="51Deg Logo" />
+          <img src="/ua-parser-js/assets/logo-c2eb24fb.svg" alt="51Degrees" />
           <p>© Copyright 2010–2026 51Degrees.mobi Limited</p>
         </div>
       </footer>
