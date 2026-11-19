@@ -69,22 +69,6 @@ header img {
   margin: 0 0 30px;
 }
 
-/* Rows the free Resource Key cannot fill, added by paid-properties.js. */
-.playground .CH-parsed__value span.paid {
-  background: rgba(230, 45, 57, 0.25);
-  color: #ffffff;
-}
-.playground .paid-note {
-  font-family: "Roboto";
-  font-size: 14px;
-  line-height: 22px;
-  color: #ffffff;
-  margin: 18px 24px 24px 80px;
-}
-.playground .paid-note a {
-  color: #8fbaf0;
-}
-
 .find-out-more {
   margin-bottom: 80px;
 }
@@ -158,8 +142,5 @@ header img {
   .getstarted h2 {
     font-size: 3.2147rem;
     text-align: center;
-  }
-  .playground .paid-note {
-    margin: 12px 20px 20px;
   }
 }
